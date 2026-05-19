@@ -292,7 +292,7 @@
     <div class="sb-section">
       <div class="sb-label">Signal</div>
       <div class="pills">
-        <button class="pill p-all on" data-filter="all" onclick="setSig('all',this)">All 17</button>
+        <button class="pill p-all on" data-filter="all" onclick="setSig('all',this)">All 18</button>
         <button class="pill p-actnow" data-filter="ACT NOW" onclick="setSig('ACT NOW',this)">Act Now</button>
         <button class="pill p-warm" data-filter="WARM" onclick="setSig('WARM',this)">Warm</button>
         <button class="pill p-watch" data-filter="WATCH" onclick="setSig('WATCH',this)">Watch</button>
@@ -320,77 +320,77 @@ const TODAY = "May 19, 2026";
 document.getElementById('hdr-date').textContent = TODAY;
 
 const ACCTS = [
-  { id:"willow", name:"Willow Bridge Property", ae:"Michael T.", status:"WARM", industry:"Real Estate", stage:"Engaged", clicks:21, pv:60, lastVisit:"May 12", known:5,
+  { id:"willow", name:"Willow Bridge Property", ae:"Michael Tarter", status:"WARM", industry:"Real Estate", stage:"Engaged", clicks:21, pv:60, lastVisit:"May 17", known:7,
     intent:[{kw:"Social KW",v:0.89},{kw:"SEO KWs",v:0.30},{kw:"Competitors",v:0.14},{kw:"Channel KW",v:0.10}],
     highlight:"Highest page views in program",
-    context:"35 visitors and 60 page views (67% up). Clara Cho (Director, Digital Strategy) visiting repeatedly on May 12. Struggling with insights-oriented platform — re-engagement angle is the platform intelligence gap.",
+    context:"35 visitors and 60 page views (67% up). Clara Cho (Director, Digital Strategy) visiting repeatedly. Struggling with insights-oriented platform — re-engagement angle is the platform intelligence gap.",
     people:[{i:"CC",n:"Clara Cho",t:"Director, Digital Strategy"}],
-    actions:["Personalized LP going live — AE image + account-specific messaging","Re-engagement outreach from Michael T. — frame around insights platform gap","Follow up on May 12 spike — Clara Cho is the working contact"]
+    actions:["Personalized LP going live — AE image + account-specific messaging","Re-engagement outreach from Michael Tarter — frame around insights platform gap","Follow up on engagement spike — Clara Cho is the working contact"]
   },
-  { id:"drhorton", name:"DR Horton", ae:"Derek", status:"ACT NOW", industry:"Real Estate", stage:"Engaged", clicks:19, pv:48, lastVisit:"May 12", known:5,
+  { id:"drhorton", name:"DR Horton", ae:"Drew Darman", status:"ACT NOW", industry:"Real Estate", stage:"Engaged", clicks:16, pv:48, lastVisit:"May 17", known:4,
     intent:[{kw:"Social KW",v:1.03},{kw:"SEO KWs",v:0.26},{kw:"Competitors",v:0.23}],
     highlight:"243% engagement surge",
     context:"25 visitors and 48 page views (243% up). Local division engaged — corporate uses ChatMeter. Strong Social and Competitors intent. Displacement angle is active.",
     people:[],
     actions:["Send counter-narrative vs ChatMeter this week","Tailor outreach to local division contacts","AI Visibility Report in progress — use as conversation opener"]
   },
-  { id:"cedars", name:"Cedars-Sinai", ae:"Jennifer", status:"WARM", industry:"Healthcare", stage:"MQA", clicks:19, pv:23, lastVisit:"Apr 22", known:1,
+  { id:"cedars", name:"Cedars-Sinai", ae:"Jennifer Villani", status:"WARM", industry:"Healthcare", stage:"MQA", clicks:2, pv:23, lastVisit:"May 15", known:1,
     intent:[{kw:"Social KW",v:0.82},{kw:"Competitors",v:0.31},{kw:"SEO KWs",v:0.28},{kw:"ISV Partners",v:0.15}],
     highlight:"Upsell — ORM expansion",
-    context:"Existing Birdeye Search customer. ORM is the next buy. Carrie Yutzu is the working contact (Search). Jennifer now owns the account — existing Search relationship is the credibility bridge to the ORM team.",
+    context:"Existing Birdeye Search customer. ORM is the next buy. Carrie Yutzy is the working contact (Search). Jennifer Villani now owns the account — existing Search relationship is the credibility bridge to the ORM team.",
     people:[{i:"CY",n:"Carrie Yutzy",t:"Working Contact (Search)"}],
-    actions:["Leverage Search relationship to introduce ORM team","Jennifer to map ORM stakeholders internally","AI Visibility Report to show Search → ORM expansion value"]
+    actions:["Leverage Search relationship to introduce ORM team","Jennifer Villani to map ORM stakeholders internally","AI Visibility Report to show Search → ORM expansion value"]
   },
-  { id:"pds", name:"Pacific Dental Services", ae:"Brian J", status:"WATCH", industry:"Dental", stage:"Engaged", clicks:16, pv:28, lastVisit:"May 6", known:2,
+  { id:"pds", name:"Pacific Dental Services", ae:"Brian Jeffery", status:"WATCH", industry:"Dental", stage:"Engaged", clicks:7, pv:28, lastVisit:"May 19", known:2,
     intent:[{kw:"Social KW",v:0.19},{kw:"SEO KWs",v:0.21},{kw:"Brand reputation",v:0.15}],
     highlight:"Rebrand = platform eval trigger",
     context:"On Yext. Evaluating Birdeye 2H 2026. PDS Health rebrand active — brand consistency narrative is the strongest outreach angle. Courtney Taylor (Director, Brand) is the working contact.",
     people:[{i:"CT",n:"Courtney Taylor",t:"Director, Brand"}],
-    actions:["Lead with brand consistency narrative tied to rebrand","Brian J to prep rebrand-specific outreach","Monitor intent for Yext displacement signal escalation"]
+    actions:["Lead with brand consistency narrative tied to rebrand","Brian Jeffery to prep rebrand-specific outreach","Monitor intent for Yext displacement signal escalation"]
   },
-  { id:"tjx", name:"TJX Companies", ae:"Michael T.", status:"WARM", industry:"Retail", stage:"Opportunity", clicks:15, pv:37, lastVisit:"May 12", known:1,
+  { id:"tjx", name:"TJX Companies", ae:"Michael Tarter", status:"WARM", industry:"Retail", stage:"Opportunity", clicks:3, pv:37, lastVisit:"May 19", known:1,
     intent:[{kw:"Competitors",v:0.82},{kw:"Social KW",v:0.73},{kw:"SEO KWs",v:0.64},{kw:"Non-Brand Intent",v:0.47}],
     highlight:"Strongest combined intent in program",
     context:"Strongest combined intent score in the program. Qualtrics, Sprout Social, Hootsuite, Yext intent all visible. Lost survey RFP previously — now connected to CMO + Head of Consumer Insights via founder. Insights AI + Surveys AI displacement territory.",
     people:[{i:"CM",n:"CMO Contact",t:"via founder connection"},{i:"CI",n:"Head of Consumer Insights",t:"via founder connection"}],
     actions:["Use founder connection to re-enter at CMO level","Frame Insights AI + Surveys AI as Qualtrics/Hootsuite replacement","AI Visibility Report in progress — strong opener"]
   },
-  { id:"advocate", name:"Advocate Health Care", ae:"Jordan", status:"ACT NOW", industry:"Healthcare", stage:"Opportunity", clicks:15, pv:3, lastVisit:"Feb 18", known:2,
+  { id:"advocate", name:"Advocate Health Care", ae:"Jennifer Villani", status:"ACT NOW", industry:"Healthcare", stage:"Opportunity", clicks:1, pv:3, lastVisit:"Feb 18", known:2,
     intent:[{kw:"Social KW",v:1.26},{kw:"SEO KWs",v:0.37},{kw:"Non-Brand Intent",v:0.16}],
     highlight:"Active RFP — Rep.com CSM gone",
-    context:"Active RFP. Rep.com CSM accepted internal role mid-evaluation — insider risk is live. Top of intent heatmap at 1.26 Social. 15 ad clicks but no site visit since Feb 18. Most urgent account in the program.",
-    people:[{i:"JO",n:"Jordan (AE)",t:"Account Executive"}],
-    actions:["Jordan to send counter-narrative THIS WEEK — urgent","Address Rep.com insider risk directly in outreach","AI Visibility Report ready — use as conversation starter immediately"]
+    context:"Active RFP. Rep.com CSM accepted internal role mid-evaluation — insider risk is live. Top of intent heatmap at 1.26 Social. Ad clicks recorded but no site visit since Feb 18. Most urgent account in the program.",
+    people:[{i:"JV",n:"Jennifer Villani",t:"Account Executive"}],
+    actions:["Jennifer Villani to send counter-narrative THIS WEEK — urgent","Address Rep.com insider risk directly in outreach","AI Visibility Report ready — use as conversation starter immediately"]
   },
-  { id:"multicare", name:"Multicare Health System", ae:"Brian J", status:"ACT NOW", industry:"Healthcare", stage:"Engaged", clicks:14, pv:30, lastVisit:"May 13", known:1,
+  { id:"multicare", name:"Multicare Health System", ae:"Brian Jeffery", status:"ACT NOW", industry:"Healthcare", stage:"Engaged", clicks:10, pv:30, lastVisit:"May 13", known:2,
     intent:[{kw:"Social KW",v:0.71},{kw:"SEO KWs",v:0.40},{kw:"Non-Brand Intent",v:0.36},{kw:"Appointment scheduling",v:0.20}],
     highlight:"Samaritan acquisition mid-2026",
     context:"Currently on Press Ganey. Acquiring Samaritan mid-2026 — M&A creates platform consolidation pressure exactly when Birdeye can win the displacement. Karla Sclater is the working contact.",
     people:[{i:"KS",n:"Karla Sclater",t:"Working Contact"}],
-    actions:["Frame pitch around Samaritan platform consolidation timing","Brian J to connect with Karla Sclater this week","AI Visibility Report in progress"]
+    actions:["Frame pitch around Samaritan platform consolidation timing","Brian Jeffery to connect with Karla Sclater this week","AI Visibility Report in progress"]
   },
-  { id:"fiveguys", name:"Five Guys", ae:"April Ngo", status:"WATCH", industry:"Restaurants", stage:"Engaged", clicks:13, pv:11, lastVisit:"May 6", known:0,
+  { id:"fiveguys", name:"Five Guys", ae:"Drew Darman", status:"WATCH", industry:"Restaurants", stage:"Engaged", clicks:0, pv:11, lastVisit:"May 6", known:0,
     intent:[{kw:"Social KW",v:0.22},{kw:"AI search visibility",v:0.15},{kw:"Media advertising",v:0.10}],
     highlight:"Signaled 'will be back'",
     context:"Currently on Yext. AE intel: signaled 'will be back.' Jack Goodson is the working contact. QSR is the highest-frequency local search category — AI visibility gaps directly impact foot traffic.",
     people:[{i:"JG",n:"Jack Goodson",t:"Working Contact"}],
-    actions:["April Ngo to reach Jack Goodson with AI visibility angle","Show QSR foot-traffic impact of AI search gaps","Monitor for Yext contract renewal window"]
+    actions:["Drew Darman to reach Jack Goodson with AI visibility angle","Show QSR foot-traffic impact of AI search gaps","Monitor for Yext contract renewal window"]
   },
-  { id:"moneygram", name:"MoneyGram", ae:"Derek", status:"WATCH", industry:"Finance", stage:"Aware", clicks:12, pv:12, lastVisit:"May 7", known:1,
+  { id:"moneygram", name:"MoneyGram", ae:"Drew Darman", status:"WATCH", industry:"Finance", stage:"Aware", clicks:9, pv:12, lastVisit:"May 7", known:1,
     intent:[{kw:"Social KW",v:0.28},{kw:"Competitors",v:0.18},{kw:"Yext",v:0.15}],
     highlight:"Full C-suite refresh — no incumbent loyalty",
     context:"Full C-suite refresh — cold restart with new leadership. Yext intent is the cleanest displacement signal. Doug Klees, Jeffrey Gorsuch, Juan Agualimpia are LI-validated. No incumbent loyalty risk.",
     people:[{i:"DK",n:"Doug Klees",t:"C-suite (LI-validated)"},{i:"JG",n:"Jeffrey Gorsuch",t:"C-suite (LI-validated)"},{i:"JA",n:"Juan Agualimpia",t:"C-suite (LI-validated)"}],
-    actions:["Derek to connect with new C-suite — no incumbent loyalty","Lead with Yext displacement narrative","Cold outreach via LinkedIn message ad"]
+    actions:["Drew Darman to connect with new C-suite — no incumbent loyalty","Lead with Yext displacement narrative","Cold outreach via LinkedIn message ad"]
   },
-  { id:"adventist", name:"Adventist Health Corp", ae:"Jennifer", status:"WARM", industry:"Healthcare", stage:"MQA", clicks:4, pv:14, lastVisit:"May 7", known:3,
+  { id:"adventist", name:"Adventist Health Corp", ae:"Jordan Pinzolo", status:"WARM", industry:"Healthcare", stage:"MQA", clicks:3, pv:14, lastVisit:"May 19", known:3,
     intent:[{kw:"Competitors",v:0.90},{kw:"Social KW",v:0.40},{kw:"SEO KWs",v:0.18},{kw:"Hootsuite + Qualtrics",v:0.15}],
-    highlight:"Highest competitor intent score — 0.90",
+    highlight:"Highest competitor intent — 0.90",
     context:"Top Competitors intent at 0.90. Hootsuite + Qualtrics intent supports Social AI + Surveys AI displacement angle. 3 known people: Mara Bryant, Patricia Stone, Karen Hansberger.",
     people:[{i:"MB",n:"Mara Bryant",t:"Known contact"},{i:"PS",n:"Patricia Stone",t:"Known contact"},{i:"KH",n:"Karen Hansberger",t:"Known contact"}],
-    actions:["Frame Social AI + Surveys AI as Hootsuite/Qualtrics replacement","Jennifer to activate all 3 known contacts","AI Visibility Report in progress"]
+    actions:["Frame Social AI + Surveys AI as Hootsuite/Qualtrics replacement","Jordan Pinzolo to activate all 3 known contacts","AI Visibility Report in progress"]
   },
-  { id:"fullspeed", name:"FullSpeed Automotive", ae:"Brian Bulkley", status:"WATCH", industry:"Automotive", stage:"Aware", clicks:0, pv:4, lastVisit:"May 11", known:2,
+  { id:"fullspeed", name:"FullSpeed Automotive", ae:"Brian Bulkley", status:"WATCH", industry:"Automotive", stage:"Aware", clicks:1, pv:4, lastVisit:"May 11", known:2,
     intent:[{kw:"Social KW",v:0.20},{kw:"AI search visibility",v:0.15},{kw:"Franchise growth",v:0.10}],
     highlight:"Sun Auto Tire reference available",
     context:"Multiple automotive brands. Stacey Pool (CMO), Vanessa Allen, Bethany Kaufman are working contacts — 9 LI-validated, 12 total contacts. Sun Auto Tire (Birdeye customer) is the credibility reference.",
@@ -404,40 +404,47 @@ const ACCTS = [
     people:[{i:"BK",n:"Beth Keckley",t:"Active contact"},{i:"RB",n:"Ryan Brown",t:"Active contact"}],
     actions:["June close target — acceleration needed this week","Address compliance vs local visibility tension directly","Brian Bulkley to push evaluation forward with Beth + Ryan"]
   },
-  { id:"unitedrentals", name:"United Rentals", ae:"TBD", status:"ACT NOW", industry:"Industrial", stage:"MQA", clicks:0, pv:755, lastVisit:"May 13", known:0,
+  { id:"unitedrentals", name:"United Rentals", ae:"Rich Spaulding", status:"ACT NOW", industry:"Consumer Services", stage:"MQA", clicks:9, pv:755, lastVisit:"May 19", known:0,
     intent:[{kw:"Braze",v:0.85},{kw:"Qualtrics",v:0.78},{kw:"Zendesk",v:0.72},{kw:"44 total keywords",v:0.65}],
     highlight:"755 PVs — highest in entire program",
-    context:"Highest engagement in the program — 755 page views, 346 unique visitors (56% up), 13 intent engagement points across 44 keywords. Last visit May 13. Active research across major CX platforms (Braze, Qualtrics, Zendesk). Top displacement target in expanded segment.",
+    context:"Highest engagement in the program — 755 page views, 346 unique visitors (56% up), 13 intent engagement points across 44 keywords. Last visit May 19. Active research across major CX platforms (Braze, Qualtrics, Zendesk). Top displacement target in expanded segment.",
     people:[],
-    actions:["Assign AE immediately — account is hot","Frame Braze/Qualtrics/Zendesk displacement narrative","Personalized outreach to highest-frequency visitors"]
+    actions:["Rich Spaulding to prioritize outreach — account is hot","Frame Braze/Qualtrics/Zendesk displacement narrative","Personalized outreach to highest-frequency visitors"]
   },
-  { id:"farmers", name:"Farmers Insurance", ae:"TBD", status:"ACT NOW", industry:"Insurance", stage:"MQA", clicks:0, pv:47, lastVisit:"May 13", known:0,
+  { id:"farmers", name:"Farmers Insurance", ae:"Rich Spaulding", status:"ACT NOW", industry:"Insurance", stage:"MQA", clicks:45, pv:47, lastVisit:"May 18", known:2,
     intent:[{kw:"Zendesk",v:0.74},{kw:"Qualtrics",v:0.68},{kw:"Braze",v:0.55},{kw:"33 total keywords",v:0.40}],
-    highlight:"SEO lead researching AI Visibility",
-    context:"31 unique visitors and 47 page views. Christian DeMink (SEO & AEO lead) visiting AI Visibility Checker — strong intent signal. Engagement down 53% from prior period but 33 keywords still active. Qualify with field marketing follow-up.",
+    highlight:"45 clicks — highest click volume in program",
+    context:"31 unique visitors, 47 page views, and 45 ad clicks — highest click volume in the entire program. Christian DeMink (SEO & AEO lead) visiting AI Visibility Checker. Strong signal to qualify and activate.",
     people:[{i:"CD",n:"Christian DeMink",t:"SEO & AEO Lead"}],
-    actions:["Assign AE and qualify with field marketing follow-up","Lead with AI Visibility angle — Christian DeMink is the hook","Monitor engagement trend before committing budget"]
+    actions:["Rich Spaulding to follow up immediately — 45 clicks is top of program","Lead with AI Visibility angle — Christian DeMink is the hook","Qualify with field marketing follow-up"]
   },
-  { id:"pennstate", name:"Penn State Health", ae:"TBD", status:"ACT NOW", industry:"Healthcare", stage:"Opportunity", clicks:0, pv:19, lastVisit:"May 13", known:0,
+  { id:"pennstate", name:"Penn State Health", ae:"Dan Dougherty", status:"ACT NOW", industry:"Healthcare", stage:"Opportunity", clicks:3, pv:19, lastVisit:"May 16", known:0,
     intent:[{kw:"Healthcare ORM",v:0.65},{kw:"Reputation management",v:0.55},{kw:"Local visibility",v:0.30}],
-    highlight:"In Opportunity — AE needed now",
+    highlight:"In Opportunity — direct AE engagement ready",
     context:"13 unique visitors and 19 page views (36% up). Back-and-forth funnel motion suggests committee evaluation in progress. Currently in Opportunity stage — direct AE engagement ready.",
     people:[],
-    actions:["Assign AE immediately — Opportunity stage","Multi-threaded outreach for committee evaluation","Healthcare ORM + reputation management angle"]
+    actions:["Dan Dougherty to activate now — Opportunity stage","Multi-threaded outreach for committee evaluation","Healthcare ORM + reputation management angle"]
   },
-  { id:"ross", name:"Ross Stores", ae:"TBD", status:"ACT NOW", industry:"Retail", stage:"Opportunity", clicks:0, pv:8, lastVisit:"Apr 22", known:0,
+  { id:"ross", name:"Ross Stores", ae:"Rich Spaulding", status:"ACT NOW", industry:"Retail", stage:"Opportunity", clicks:1, pv:8, lastVisit:"May 19", known:0,
     intent:[{kw:"Brand reputation",v:0.60},{kw:"Media advertising",v:0.45},{kw:"Social media ads",v:0.35},{kw:"AI search",v:0.25}],
     highlight:"Engaged → Opportunity in 70 days",
     context:"Fast funnel motion: Engaged → MQA in 68 days → Opportunity in just 2 days. Brand reputation and media advertising intent aligns with TJX as retail comparable.",
     people:[],
-    actions:["Assign AE — Opportunity stage requires immediate action","Use TJX as retail comparable in outreach","Brand reputation narrative aligned to retail positioning"]
+    actions:["Rich Spaulding to act on Opportunity stage urgently","Use TJX as retail comparable in outreach","Brand reputation narrative aligned to retail positioning"]
   },
-  { id:"lehigh", name:"Lehigh Valley Health Network", ae:"TBD", status:"WATCH", industry:"Healthcare", stage:"Aware", clicks:0, pv:8, lastVisit:"May 13", known:0,
+  { id:"lehigh", name:"Lehigh Valley Health Network", ae:"Dan Dougherty", status:"WATCH", industry:"Healthcare", stage:"Aware", clicks:2, pv:8, lastVisit:"May 18", known:0,
     intent:[{kw:"Reputation management",v:0.55},{kw:"Media advertising",v:0.40},{kw:"Social media ads",v:0.35},{kw:"Healthcare ORM",v:0.30}],
     highlight:"60% engagement growth — qualify now",
-    context:"6 unique visitors and 8 page views (60% up), last visit May 13. Fresh and growing engagement. Healthcare ORM angle aligns with Multicare and Cedars-Sinai playbook. Worth qualifying for STR program inclusion.",
+    context:"6 unique visitors and 8 page views (60% up), last visit May 18. Fresh and growing engagement. Healthcare ORM angle aligns with Multicare and Cedars-Sinai playbook. Worth qualifying for STR program inclusion.",
     people:[],
-    actions:["Evaluate for STR program inclusion","Healthcare ORM playbook applies — align with Multicare/Cedars strategy","Monitor for intent acceleration before budget commitment"]
+    actions:["Dan Dougherty to evaluate for STR program inclusion","Healthcare ORM playbook applies — align with Multicare/Cedars strategy","Monitor for intent acceleration before budget commitment"]
+  },
+  { id:"umass", name:"UMass Memorial Medical Center", ae:"Dan Dougherty", status:"WATCH", industry:"Healthcare", stage:"Aware", clicks:2, pv:10, lastVisit:"Mar 12", known:2,
+    intent:[{kw:"Healthcare ORM",v:0.55},{kw:"Reputation management",v:0.45},{kw:"Social media",v:0.30},{kw:"AI search visibility",v:0.20}],
+    highlight:"Healthcare ORM — Multicare playbook applies",
+    context:"2 known people engaged, 2 clicks. Last visit Mar 12 — engagement has cooled. Healthcare system in Massachusetts. ORM and reputation management intent aligns with the Multicare and Cedars-Sinai playbook. Re-engagement needed.",
+    people:[],
+    actions:["Dan Dougherty to re-engage with healthcare ORM narrative","Use Multicare and Cedars-Sinai as comparable references","Monitor intent for acceleration before increasing spend"]
   }
 ];
 
