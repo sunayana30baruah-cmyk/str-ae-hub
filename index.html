@@ -7,290 +7,322 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #ffffff;
-    --bg-secondary: #f7f6f3;
-    --bg-tertiary: #f1f0ec;
-    --text: #1a1a18;
-    --text-secondary: #5c5c58;
-    --text-tertiary: #9e9d99;
-    --border: rgba(0,0,0,0.08);
-    --border-med: rgba(0,0,0,0.13);
-    --green: #1D9E75;
-    --green-light: #E1F5EE;
-    --red: #E24B4A;
-    --red-light: #FCEBEB;
-    --red-text: #A32D2D;
-    --amber: #EF9F27;
-    --amber-light: #FAEEDA;
-    --amber-text: #633806;
-    --blue: #378ADD;
-    --blue-light: #E6F1FB;
-    --blue-text: #0C447C;
-    --radius: 10px;
-    --radius-sm: 6px;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--bg-secondary:#f7f6f3;--bg-tertiary:#f1f0ec;
+  --text:#1a1a18;--text-secondary:#5c5c58;--text-tertiary:#9e9d99;
+  --border:rgba(0,0,0,0.08);--border-med:rgba(0,0,0,0.13);
+  --green:#1D9E75;--green-light:#E1F5EE;
+  --red:#E24B4A;--red-light:#FCEBEB;--red-text:#A32D2D;
+  --amber:#EF9F27;--amber-light:#FAEEDA;--amber-text:#633806;
+  --blue:#378ADD;--blue-light:#E6F1FB;--blue-text:#0C447C;
+  --radius:10px;--radius-sm:6px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1c1c1a;--bg-secondary:#242422;--bg-tertiary:#161614;
+    --text:#f0ede8;--text-secondary:#a8a6a0;--text-tertiary:#6a6864;
+    --border:rgba(255,255,255,0.07);--border-med:rgba(255,255,255,0.13);
+    --green-light:#04342C;--red-light:#501313;--red-text:#F09595;
+    --amber-light:#412402;--amber-text:#FAC775;--blue-light:#042C53;--blue-text:#85B7EB;
   }
+}
+html,body{height:100%}
+body{font-family:'DM Sans',sans-serif;background:var(--bg-tertiary);color:var(--text);font-size:14px;line-height:1.5}
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #1c1c1a;
-      --bg-secondary: #242422;
-      --bg-tertiary: #161614;
-      --text: #f0ede8;
-      --text-secondary: #a8a6a0;
-      --text-tertiary: #6a6864;
-      --border: rgba(255,255,255,0.07);
-      --border-med: rgba(255,255,255,0.13);
-      --green-light: #04342C;
-      --red-light: #501313;
-      --red-text: #F09595;
-      --amber-light: #412402;
-      --amber-text: #FAC775;
-      --blue-light: #042C53;
-      --blue-text: #85B7EB;
-    }
-  }
+/* HEADER */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:200;height:48px;background:var(--bg);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.hdr-l{display:flex;align-items:center;gap:10px}
+.hdr-dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
+.hdr-brand{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary)}
+.hdr-title{font-size:14px;font-weight:500;color:var(--text)}
+.hdr-date{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-tertiary)}
 
-  html, body { height: 100%; }
+/* DASHBOARD */
+.db{background:var(--bg);border-bottom:0.5px solid var(--border);padding:12px 20px;position:sticky;top:48px;z-index:99}
+.db-grid{display:grid;grid-template-columns:0.8fr 0.5px 1fr;align-items:start;gap:0}
+.db-div{background:var(--border-med);margin:0 14px;align-self:stretch}
+.db-sec{padding:0 2px;display:flex;flex-direction:column;gap:7px}
+.db-sec-lbl{font-size:9.5px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary)}
+.db-tiles{display:flex;gap:7px}
+.db-tile{background:var(--bg-secondary);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:8px 11px;flex:1}
+.db-tl{font-size:9px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:2px}
+.db-tv{font-size:20px;font-weight:500;font-family:'DM Mono',monospace;color:var(--text);line-height:1}
+.db-ts{font-size:10px;color:var(--text-secondary);margin-top:2px}
+.up{color:var(--green);font-weight:500}
+.dn{color:var(--red);font-weight:500}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg-tertiary);
-    color: var(--text);
-    font-size: 14px;
-    line-height: 1.5;
-  }
+/* Funnel row — all blocks same fixed height */
+.db-funnel{display:flex;gap:6px;align-items:stretch;height:82px}
+.db-stage{flex:1;border-radius:var(--radius-sm);padding:8px 10px;border:0.5px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.s-mqa{background:#EAF5F0;border-color:var(--green)}
+.s-sal{background:var(--amber-light);border-color:var(--amber)}
+.s-sql{background:var(--red-light);border-color:var(--red)}
+.s-opp{background:var(--blue-light);border-color:var(--blue)}
+.s-mtg{background:var(--blue-light);border-color:var(--blue)}
+.db-sl{font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase}
+.s-mqa .db-sl{color:#0f6047}.s-sal .db-sl{color:var(--amber-text)}.s-sql .db-sl{color:var(--red-text)}.s-opp .db-sl{color:var(--blue-text)}.s-mtg .db-sl{color:var(--blue-text)}
+.db-sn{font-size:26px;font-weight:500;font-family:'DM Mono',monospace;color:var(--text);line-height:1}
+.db-sbadge{display:inline-block;font-size:8px;font-weight:500;padding:1px 5px;border-radius:3px;background:rgba(0,0,0,0.06);color:var(--text-secondary)}
+.db-badge-green{background:rgba(29,158,117,0.15);color:#0f6047}
+.db-badge-amber{background:rgba(239,159,39,0.15);color:var(--amber-text)}
+.db-badge-red{background:rgba(226,75,74,0.15);color:var(--red-text)}
+.db-mtg-mini{font-size:9px;color:var(--blue-text);line-height:1.3}
 
-  /* HEADER */
-  .header {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    height: 48px;
-    background: var(--bg);
-    border-bottom: 0.5px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 20px;
-  }
-  .header-left { display: flex; align-items: center; gap: 10px; }
-  .header-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
-  .header-brand { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); }
-  .header-title { font-size: 14px; font-weight: 500; color: var(--text); }
-  .header-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-tertiary); }
+/* SQL hero — inline split, same height as siblings */
+.db-stage-sql-hero{flex:2.4}
+.db-sql-top{display:flex;align-items:center;justify-content:space-between}
+.db-sql-num{font-size:22px;font-weight:500;font-family:'DM Mono',monospace;color:var(--text);line-height:1}
+.db-acv-split{display:flex;gap:6px;flex:1;margin-top:5px}
+.db-acv-block{flex:1;border-radius:4px;padding:5px 8px;border:0.5px solid rgba(226,75,74,0.2);background:rgba(226,75,74,0.05);display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.db-acv-block.hl{background:rgba(226,75,74,0.12);border-color:rgba(226,75,74,0.4)}
+.db-acv-block-lbl{font-size:8px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--red-text);opacity:0.75}
+.db-acv-block-val{font-size:22px;font-weight:500;font-family:'DM Mono',monospace;color:var(--red-text);line-height:1;letter-spacing:-0.01em}
+.db-acv-block.hl .db-acv-block-val{font-size:26px;color:#C0392B}
+.db-acv-block-name{font-size:8.5px;color:var(--text-secondary)}
+.db-acv-block-badge{display:inline-block;font-size:7.5px;font-weight:500;padding:1px 5px;border-radius:3px;background:rgba(226,75,74,0.15);color:var(--red-text)}
+.db-acv-block.hl .db-acv-block-badge{background:var(--red);color:#fff}
 
-  /* LAYOUT */
-  .layout {
-    display: grid;
-    grid-template-columns: 255px 1fr;
-    height: 100vh;
-    padding-top: 48px;
-  }
+/* HEADER */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:200;height:48px;background:var(--bg);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.hdr-l{display:flex;align-items:center;gap:10px}
+.hdr-dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
+.hdr-brand{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary)}
+.hdr-title{font-size:14px;font-weight:500;color:var(--text)}
+.hdr-date{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-tertiary)}
 
-  /* SIDEBAR */
-  .sidebar {
-    background: var(--bg);
-    border-right: 0.5px solid var(--border);
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-  }
+/* DASHBOARD */
+.db{background:var(--bg);border-bottom:0.5px solid var(--border);padding:14px 20px;position:sticky;top:48px;z-index:99}
+.db-grid{display:grid;grid-template-columns:0.8fr 0.5px 1fr;align-items:stretch;gap:0}
+.db-div{background:var(--border-med);margin:0 14px}
+.db-sec{padding:0 2px;display:flex;flex-direction:column;gap:8px}
+.db-sec-lbl{font-size:9.5px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary)}
+.db-tiles{display:flex;gap:7px}
+.db-tile{background:var(--bg-secondary);border:0.5px solid var(--border);border-radius:var(--radius-sm);padding:8px 11px;flex:1}
+.db-tl{font-size:9px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:2px}
+.db-tv{font-size:20px;font-weight:500;font-family:'DM Mono',monospace;color:var(--text);line-height:1}
+.db-ts{font-size:10px;color:var(--text-secondary);margin-top:2px}
+.up{color:var(--green);font-weight:500}
+.dn{color:var(--red);font-weight:500}
+.db-funnel{display:flex;gap:6px}
+.db-stage{flex:1;border-radius:var(--radius-sm);padding:7px 9px;border:0.5px solid var(--border);display:flex;flex-direction:column;gap:2px}
+.s-mqa{background:#EAF5F0;border-color:var(--green)}
+.s-sal{background:var(--amber-light);border-color:var(--amber)}
+.s-sql{background:var(--red-light);border-color:var(--red)}
+.s-opp{background:var(--blue-light);border-color:var(--blue)}
+.db-sl{font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase}
+.s-mqa .db-sl{color:#0f6047}.s-sal .db-sl{color:var(--amber-text)}.s-sql .db-sl{color:var(--red-text)}.s-opp .db-sl{color:var(--blue-text)}
+.db-sn{font-size:26px;font-weight:500;font-family:'DM Mono',monospace;color:var(--text);line-height:1}
+.db-sb{font-size:9.5px;color:var(--text-secondary)}
+.db-sbadge{display:inline-block;font-size:8.5px;font-weight:500;padding:1px 5px;border-radius:3px;background:rgba(0,0,0,0.06);color:var(--text-secondary);margin-top:1px}
 
-  .sidebar::-webkit-scrollbar { width: 4px; }
-  .sidebar::-webkit-scrollbar-track { background: transparent; }
-  .sidebar::-webkit-scrollbar-thumb { background: var(--border-med); border-radius: 2px; }
+/* INFLUENCE HERO */
+.db-infl{background:linear-gradient(135deg,#0b3528 0%,#1D9E75 100%);border-radius:var(--radius-sm);padding:12px 15px;display:flex;flex-direction:column;justify-content:space-between;gap:5px;height:100%}
+.db-infl-top{font-size:9.5px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6)}
+.db-infl-acv{font-size:38px;font-weight:500;font-family:'DM Mono',monospace;color:#fff;line-height:1;letter-spacing:-0.02em}
+.db-infl-sub{font-size:11px;color:rgba(255,255,255,0.75)}
+.db-infl-pills{display:flex;gap:5px;flex-wrap:wrap}
+.db-infl-pill{font-size:9.5px;padding:2px 7px;border-radius:20px;background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border:0.5px solid rgba(255,255,255,0.25)}
+.db-infl-note{font-size:9.5px;color:rgba(255,255,255,0.5);font-style:italic}
+.db-acv-split{display:flex;gap:8px;margin-top:2px}
+.db-acv-block{flex:1;background:rgba(0,0,0,0.18);border-radius:5px;padding:8px 10px;border:0.5px solid rgba(255,255,255,0.12)}
+.db-acv-block.highlight{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.35)}
+.db-acv-block-lbl{font-size:8.5px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:3px}
+.db-acv-block-val{font-size:30px;font-weight:500;font-family:'DM Mono',monospace;color:#fff;line-height:1;letter-spacing:-0.02em}
+.db-acv-block.highlight .db-acv-block-val{color:#7FFFD4}
+.db-acv-block-name{font-size:10px;color:rgba(255,255,255,0.6);margin-top:3px}
+.db-acv-block-badge{display:inline-block;font-size:8.5px;font-weight:500;padding:1px 6px;border-radius:3px;margin-top:3px;background:rgba(255,255,255,0.2);color:#fff}
+.db-acv-block.highlight .db-acv-block-badge{background:#7FFFD4;color:#0b3528}
 
-  .sb-section { padding: 12px; border-bottom: 0.5px solid var(--border); }
-  .sb-label {
-    font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--text-tertiary);
-    margin-bottom: 8px; padding: 0 2px;
-  }
-  .pills { display: flex; flex-wrap: wrap; gap: 4px; }
+/* MEETINGS inline */
+.db-mtg-mini{font-size:9.5px;color:var(--blue-text);margin-top:1px}
+.s-mtg{background:var(--blue-light);border-color:var(--blue)}
+.s-mtg .db-sl{color:var(--blue-text)}
 
-  .pill {
-    font-size: 11px; padding: 3px 9px; border-radius: 20px;
-    border: 0.5px solid var(--border-med);
-    background: transparent; color: var(--text-secondary);
-    cursor: pointer; transition: all 0.12s; font-family: 'DM Sans', sans-serif;
-  }
-  .pill:hover { background: var(--bg-secondary); }
-  .pill.p-all.on { background: var(--green); border-color: var(--green); color: #fff; }
-  .pill.p-actnow.on { background: var(--red); border-color: var(--red); color: #fff; }
-  .pill.p-warm.on { background: var(--amber); border-color: var(--amber); color: #fff; }
-  .pill.p-watch.on { background: var(--blue); border-color: var(--blue); color: #fff; }
-  .pill.p-ae.on { background: var(--bg-secondary); border-color: var(--border-med); color: var(--text); font-weight: 500; }
+/* SQL HERO block */
+.db-stage-sql-hero{position:relative;padding:8px 10px 10px}
+.db-sn-hero{font-size:28px}
+.db-acv-hero{font-size:30px;font-weight:500;font-family:'DM Mono',monospace;color:var(--red);line-height:1;margin-top:2px}
+.db-acv-sub{font-size:9px;text-transform:uppercase;letter-spacing:0.08em;color:var(--red-text);font-weight:500;margin-top:1px}
+.db-acv-names{font-size:9.5px;color:var(--red-text);margin-top:3px;margin-bottom:3px}
 
-  .sb-accts-label {
-    font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--text-tertiary);
-    padding: 10px 14px 4px;
-  }
+/* badge colours */
+.db-badge-green{background:rgba(29,158,117,0.15);color:#0f6047}
+.db-badge-amber{background:rgba(239,159,39,0.15);color:var(--amber-text)}
+.db-badge-red{background:rgba(226,75,74,0.15);color:var(--red-text)}
 
-  .acct-item {
-    display: flex; align-items: center; gap: 9px;
-    padding: 9px 14px; cursor: pointer;
-    border-bottom: 0.5px solid var(--border);
-    transition: background 0.1s;
-    border-left: 2px solid transparent;
-  }
-  .acct-item:hover { background: var(--bg-secondary); }
-  .acct-item.selected { background: var(--bg-secondary); border-left-color: var(--green); }
-  .acct-item.hidden { display: none; }
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:255px 1fr;min-height:calc(100vh - 200px);padding-top:200px}
 
-  .acct-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-  .dot-actnow { background: var(--red); }
-  .dot-warm { background: var(--amber); }
-  .dot-watch { background: var(--blue); }
+/* SIDEBAR */
+.sidebar{background:var(--bg);border-right:0.5px solid var(--border);overflow-y:auto;max-height:calc(100vh - 200px);position:sticky;top:200px}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border-med);border-radius:2px}
+.sb-sec{padding:12px;border-bottom:0.5px solid var(--border)}
+.sb-lbl{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:8px;padding:0 2px}
+.pills{display:flex;flex-wrap:wrap;gap:4px}
+.pill{font-size:11px;padding:3px 9px;border-radius:20px;border:0.5px solid var(--border-med);background:transparent;color:var(--text-secondary);cursor:pointer;transition:all 0.12s;font-family:'DM Sans',sans-serif}
+.pill:hover{background:var(--bg-secondary)}
+.pill.p-all.on{background:var(--green);border-color:var(--green);color:#fff}
+.pill.p-actnow.on{background:var(--red);border-color:var(--red);color:#fff}
+.pill.p-warm.on{background:var(--amber);border-color:var(--amber);color:#fff}
+.pill.p-watch.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.pill.p-ae.on{background:var(--bg-secondary);border-color:var(--border-med);color:var(--text);font-weight:500}
+.sb-accts-lbl{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);padding:10px 14px 4px}
+.acct-item{display:flex;align-items:center;gap:9px;padding:9px 14px;cursor:pointer;border-bottom:0.5px solid var(--border);transition:background 0.1s;border-left:2px solid transparent}
+.acct-item:hover{background:var(--bg-secondary)}
+.acct-item.selected{background:var(--bg-secondary);border-left-color:var(--green)}
+.acct-item.hidden{display:none}
+.acct-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.dot-actnow{background:var(--red)}.dot-warm{background:var(--amber)}.dot-watch{background:var(--blue)}
+.acct-name{font-size:12.5px;color:var(--text);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acct-ae-tag{font-size:10.5px;color:var(--text-tertiary);flex-shrink:0}
 
-  .acct-name { font-size: 12.5px; color: var(--text); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .acct-ae-tag { font-size: 10.5px; color: var(--text-tertiary); flex-shrink: 0; }
+/* MAIN */
+.main{overflow-y:auto;padding:20px;background:var(--bg-tertiary)}
+.main::-webkit-scrollbar{width:4px}
+.main::-webkit-scrollbar-thumb{background:var(--border-med);border-radius:2px}
+.welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;color:var(--text-tertiary);text-align:center;gap:10px}
+.welcome svg{opacity:0.2}
+.welcome p{font-size:13px}
 
-  /* MAIN */
-  .main {
-    overflow-y: auto;
-    padding: 20px;
-    background: var(--bg-tertiary);
-  }
-  .main::-webkit-scrollbar { width: 4px; }
-  .main::-webkit-scrollbar-thumb { background: var(--border-med); border-radius: 2px; }
-
-  .welcome {
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; min-height: 60vh;
-    color: var(--text-tertiary); text-align: center; gap: 10px;
-  }
-  .welcome svg { opacity: 0.2; }
-  .welcome p { font-size: 13px; }
-
-  /* ACCOUNT VIEW */
-  .acct-view { display: none; animation: fadeIn 0.2s ease; }
-  .acct-view.visible { display: block; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-
-  /* ACCOUNT HEADER CARD */
-  .acct-card {
-    background: var(--bg);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 18px 20px;
-    margin-bottom: 14px;
-  }
-  .acct-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
-  .acct-card-name { font-size: 19px; font-weight: 500; color: var(--text); }
-  .acct-card-meta { font-size: 12px; color: var(--text-secondary); margin-top: 3px; }
-
-  .badge {
-    font-size: 10.5px; font-weight: 500; padding: 3px 10px;
-    border-radius: 20px; white-space: nowrap; flex-shrink: 0;
-  }
-  .badge-actnow { background: var(--red-light); color: var(--red-text); }
-  .badge-warm { background: var(--amber-light); color: var(--amber-text); }
-  .badge-watch { background: var(--blue-light); color: var(--blue-text); }
-
-  .stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
-  .stat {
-    background: var(--bg-secondary);
-    border-radius: var(--radius-sm);
-    padding: 11px 13px;
-  }
-  .stat-label { font-size: 10px; color: var(--text-tertiary); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.06em; }
-  .stat-val { font-size: 19px; font-weight: 500; font-family: 'DM Mono', monospace; color: var(--text); }
-  .stat-val.small { font-size: 13px; padding-top: 3px; }
-
-  /* PANELS */
-  .panel {
-    background: var(--bg);
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 15px 18px;
-    margin-bottom: 14px;
-  }
-  .panel-title {
-    font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em;
-    text-transform: uppercase; color: var(--text-tertiary);
-    margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
-  }
-  .panel-title svg { opacity: 0.5; }
-
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 0; }
-  .two-col .panel { margin-bottom: 0; }
-
-  /* INTENT */
-  .intent-row { display: flex; align-items: center; justify-content: space-between; padding: 5px 0; border-bottom: 0.5px solid var(--border); }
-  .intent-row:last-child { border-bottom: none; }
-  .intent-kw { font-size: 12px; color: var(--text-secondary); }
-  .intent-right { display: flex; align-items: center; gap: 8px; }
-  .intent-bar-bg { width: 80px; height: 3px; background: var(--border-med); border-radius: 2px; }
-  .intent-bar-fill { height: 3px; border-radius: 2px; }
-  .intent-score { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--text-tertiary); width: 30px; text-align: right; }
-
-  /* PEOPLE */
-  .person-row { display: flex; align-items: center; gap: 9px; padding: 6px 0; border-bottom: 0.5px solid var(--border); }
-  .person-row:last-child { border-bottom: none; }
-  .avatar {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: var(--blue-light); color: var(--blue-text);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 9.5px; font-weight: 500; flex-shrink: 0;
-  }
-  .person-name { font-size: 12px; font-weight: 500; color: var(--text); }
-  .person-title { font-size: 11px; color: var(--text-tertiary); }
-  .no-contacts { font-size: 12px; color: var(--text-tertiary); padding: 4px 0; }
-
-  /* NEWS */
-  .news-loading { display: flex; align-items: center; gap: 8px; color: var(--text-tertiary); font-size: 12.5px; padding: 6px 0; }
-  .spinner {
-    width: 14px; height: 14px; border-radius: 50%;
-    border: 1.5px solid var(--border-med);
-    border-top-color: var(--green);
-    animation: spin 0.75s linear infinite; flex-shrink: 0;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  .news-item { padding: 10px 0; border-bottom: 0.5px solid var(--border); }
-  .news-item:last-child { border-bottom: none; }
-  .news-headline { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.4; margin-bottom: 3px; }
-  .news-meta { font-size: 11px; color: var(--text-tertiary); }
-  .news-signal { font-size: 11.5px; color: var(--green); margin-top: 4px; font-style: italic; }
-  .news-error { font-size: 12.5px; color: var(--text-tertiary); padding: 6px 0; }
-
-  /* ACTIONS */
-  .action-item { display: flex; align-items: flex-start; gap: 9px; padding: 8px 0; border-bottom: 0.5px solid var(--border); }
-  .action-item:last-child { border-bottom: none; }
-  .action-icon {
-    width: 26px; height: 26px; border-radius: var(--radius-sm);
-    background: var(--bg-secondary); display: flex; align-items: center;
-    justify-content: center; flex-shrink: 0; margin-top: 1px;
-  }
-  .action-text { font-size: 12.5px; color: var(--text); line-height: 1.55; }
-
-  /* CONTEXT */
-  .context-tag {
-    display: inline-block; font-size: 10.5px; font-weight: 500;
-    background: var(--blue-light); color: var(--blue-text);
-    padding: 2px 8px; border-radius: 4px; margin-bottom: 8px;
-  }
-  .context-body { font-size: 12.5px; color: var(--text-secondary); line-height: 1.65; }
-
-  /* LAST UPDATED */
-  .last-updated { font-size: 10.5px; color: var(--text-tertiary); margin-top: 20px; text-align: right; padding-bottom: 10px; }
+/* ACCOUNT VIEW */
+.acct-view{display:none;animation:fadeIn 0.2s ease}
+.acct-view.visible{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.acct-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius);padding:18px 20px;margin-bottom:14px}
+.acct-card-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.acct-card-name{font-size:19px;font-weight:500;color:var(--text)}
+.acct-card-meta{font-size:12px;color:var(--text-secondary);margin-top:3px}
+.badge{font-size:10.5px;font-weight:500;padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.badge-actnow{background:var(--red-light);color:var(--red-text)}
+.badge-warm{background:var(--amber-light);color:var(--amber-text)}
+.badge-watch{background:var(--blue-light);color:var(--blue-text)}
+.stats-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.stat{background:var(--bg-secondary);border-radius:var(--radius-sm);padding:11px 13px}
+.stat-label{font-size:10px;color:var(--text-tertiary);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.06em}
+.stat-val{font-size:19px;font-weight:500;font-family:'DM Mono',monospace;color:var(--text)}
+.stat-val.small{font-size:13px;padding-top:3px}
+.stat-delta{font-size:10px;margin-top:2px}
+.delta-up{color:var(--green)}.delta-dn{color:var(--red)}
+.panel{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius);padding:15px 18px;margin-bottom:14px}
+.panel-title{font-size:10.5px;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.two-col .panel{margin-bottom:0}
+.intent-row{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid var(--border)}
+.intent-row:last-child{border-bottom:none}
+.intent-kw{font-size:12px;color:var(--text-secondary)}
+.intent-right{display:flex;align-items:center;gap:8px}
+.intent-bar-bg{width:80px;height:3px;background:var(--border-med);border-radius:2px}
+.intent-bar-fill{height:3px;border-radius:2px}
+.intent-score{font-size:11px;font-family:'DM Mono',monospace;color:var(--text-tertiary);width:30px;text-align:right}
+.person-row{display:flex;align-items:center;gap:9px;padding:6px 0;border-bottom:0.5px solid var(--border)}
+.person-row:last-child{border-bottom:none}
+.avatar{width:28px;height:28px;border-radius:50%;background:var(--blue-light);color:var(--blue-text);display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:500;flex-shrink:0}
+.person-name{font-size:12px;font-weight:500;color:var(--text)}
+.person-title{font-size:11px;color:var(--text-tertiary)}
+.no-contacts{font-size:12px;color:var(--text-tertiary);padding:4px 0}
+.news-loading{display:flex;align-items:center;gap:8px;color:var(--text-tertiary);font-size:12.5px;padding:6px 0}
+.spinner{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--border-med);border-top-color:var(--green);animation:spin 0.75s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.news-item{padding:10px 0;border-bottom:0.5px solid var(--border)}
+.news-item:last-child{border-bottom:none}
+.news-headline{font-size:13px;font-weight:500;color:var(--text);line-height:1.4;margin-bottom:3px}
+.news-meta{font-size:11px;color:var(--text-tertiary)}
+.news-signal{font-size:11.5px;color:var(--green);margin-top:4px;font-style:italic}
+.news-error{font-size:12.5px;color:var(--text-tertiary);padding:6px 0}
+.action-item{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:0.5px solid var(--border)}
+.action-item:last-child{border-bottom:none}
+.action-icon{width:26px;height:26px;border-radius:var(--radius-sm);background:var(--bg-secondary);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.action-text{font-size:12.5px;color:var(--text);line-height:1.55}
+.context-tag{display:inline-block;font-size:10.5px;font-weight:500;background:var(--blue-light);color:var(--blue-text);padding:2px 8px;border-radius:4px;margin-bottom:8px}
+.context-body{font-size:12.5px;color:var(--text-secondary);line-height:1.65}
+.last-updated{font-size:10.5px;color:var(--text-tertiary);margin-top:20px;text-align:right;padding-bottom:10px}
 </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="header-left">
-    <div class="header-dot"></div>
-    <span class="header-brand">Birdeye ABM</span>
-  </div>
-  <span class="header-title">STR AE Intelligence Hub</span>
-  <span class="header-date" id="hdr-date"></span>
+<header class="hdr">
+  <div class="hdr-l"><div class="hdr-dot"></div><span class="hdr-brand">Birdeye ABM</span></div>
+  <span class="hdr-title">STR AE Intelligence Hub</span>
+  <span class="hdr-date" id="hdr-date"></span>
 </header>
+
+<div class="db">
+  <div class="db-grid">
+
+    <!-- ENGAGEMENT -->
+    <div class="db-sec">
+      <div class="db-sec-lbl">Program engagement</div>
+      <div class="db-tiles">
+        <div class="db-tile"><div class="db-tl">Page views</div><div class="db-tv">1,260</div><div class="db-ts"><span class="up">60% up</span></div></div>
+        <div class="db-tile"><div class="db-tl">Unique visitors</div><div class="db-tv">658</div><div class="db-ts"><span class="up">80% up</span></div></div>
+        <div class="db-tile"><div class="db-tl">Accounts visited</div><div class="db-tv">15</div><div class="db-ts">of 18 total</div></div>
+      </div>
+    </div>
+    <div class="db-div"></div>
+
+    <!-- FUNNEL with big numbers + influence inline -->
+    <div class="db-sec">
+      <div class="db-sec-lbl">Funnel &amp; ABX influence</div>
+      <div class="db-funnel">
+
+        <div class="db-stage s-mqa">
+          <div class="db-sl">MQA</div>
+          <div class="db-sn">6</div>
+          <div class="db-sbadge db-badge-green">+4 new this period</div>
+        </div>
+
+        <div class="db-stage s-sal">
+          <div class="db-sl">Discovery SAL</div>
+          <div class="db-sn">3</div>
+          <div class="db-sbadge db-badge-amber">+1 after program</div>
+        </div>
+
+        <div class="db-stage s-sql db-stage-sql-hero">
+          <div class="db-sql-top">
+            <div class="db-sl">Align SQL</div>
+            <div class="db-sql-num">2</div>
+          </div>
+          <div class="db-acv-split">
+            <div class="db-acv-block hl">
+              <div class="db-acv-block-lbl">Moved to SQL · after program</div>
+              <div class="db-acv-block-val">$200K</div>
+              <div class="db-acv-block-name">Multicare Health</div>
+              <div class="db-acv-block-badge">SAL → SQL · ABX</div>
+            </div>
+            <div class="db-acv-block">
+              <div class="db-acv-block-lbl">Total influenced ACV</div>
+              <div class="db-acv-block-val">$400K</div>
+              <div class="db-acv-block-name">Multicare + Advocate</div>
+              <div class="db-acv-block-badge">Both ABX-influenced</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="db-stage s-opp">
+          <div class="db-sl">Opportunity</div>
+          <div class="db-sn">2</div>
+          <div class="db-sbadge">TJX · Ross Stores</div>
+        </div>
+
+        <div class="db-stage s-mtg">
+          <div class="db-sl">Meetings</div>
+          <div class="db-sn">2</div>
+          <div class="db-mtg-mini">Willow Bridge · May 26</div>
+          <div class="db-mtg-mini">PDS · RFP kickoff</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <div class="layout">
   <aside class="sidebar">
-    <div class="sb-section">
-      <div class="sb-label">Signal</div>
+    <div class="sb-sec">
+      <div class="sb-lbl">Signal</div>
       <div class="pills">
         <button class="pill p-all on" data-filter="all" onclick="setSig('all',this)">All 18</button>
         <button class="pill p-actnow" data-filter="ACT NOW" onclick="setSig('ACT NOW',this)">Act Now</button>
@@ -298,14 +330,13 @@
         <button class="pill p-watch" data-filter="WATCH" onclick="setSig('WATCH',this)">Watch</button>
       </div>
     </div>
-    <div class="sb-section">
-      <div class="sb-label">AE</div>
+    <div class="sb-sec">
+      <div class="sb-lbl">AE</div>
       <div class="pills" id="ae-pills"></div>
     </div>
-    <div class="sb-accts-label">Accounts</div>
+    <div class="sb-accts-lbl">Accounts</div>
     <div id="acct-list"></div>
   </aside>
-
   <main class="main" id="main">
     <div class="welcome" id="welcome">
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
@@ -316,184 +347,177 @@
 </div>
 
 <script>
-const TODAY = "May 19, 2026";
+const TODAY = "May 20, 2026";
 document.getElementById('hdr-date').textContent = TODAY;
 
 const ACCTS = [
-  { id:"willow", name:"Willow Bridge Property", ae:"Michael Tarter", status:"WARM", industry:"Real Estate", stage:"Engaged", clicks:21, campClicks:10, impr:1555, ctr:"0.643%", pv:61, lastVisit:"May 17", known:7, uvs:36, pvChange:"69% up", engPts:184,
-    intent:[{kw:"social media advertising",v:0.89},{kw:"media advertising",v:0.7},{kw:"reputation management",v:0.55}],
-    highlight:"Highest page views in program",
-    context:"35 visitors and 60 page views (67% up). Clara Cho (Director, Digital Strategy) visiting repeatedly. Struggling with insights-oriented platform — re-engagement angle is the platform intelligence gap.",
-    people:[{i:"CC",n:"Clara Cho",t:"Director, Digital Strategy"}],
-    actions:["Personalized LP going live — AE image + account-specific messaging","Re-engagement outreach from Michael Tarter — frame around insights platform gap","Follow up on engagement spike — Clara Cho is the working contact"]
-  },
-  { id:"drhorton", name:"DR Horton", ae:"Drew Darman", status:"ACT NOW", industry:"Real Estate", stage:"Engaged", clicks:16, campClicks:5, impr:10375, ctr:"0.048%", pv:50, lastVisit:"May 17", known:4, uvs:25, pvChange:"178% up", engPts:140,
-    intent:[{kw:"qualtrics",v:0.85},{kw:"social media mgmt tools",v:0.75},{kw:"zendesk",v:0.65}],
-    highlight:"243% engagement surge",
-    context:"25 visitors and 48 page views (243% up). Local division engaged — corporate uses ChatMeter. Strong Social and Competitors intent. Displacement angle is active.",
-    people:[],
-    actions:["Send counter-narrative vs ChatMeter this week","Tailor outreach to local division contacts","AI Visibility Report in progress — use as conversation opener"]
-  },
-  { id:"cedars", name:"Cedars-Sinai", ae:"Jennifer Villani", status:"WARM", industry:"Healthcare", stage:"MQA", clicks:2, campClicks:6, impr:4211, ctr:"0.143%", pv:22, lastVisit:"May 19", known:1, uvs:20, pvChange:"15% down", engPts:87,
-    intent:[{kw:"qualtrics",v:0.82},{kw:"braze",v:0.7},{kw:"zendesk",v:0.6}],
-    highlight:"Upsell — ORM expansion",
-    context:"Entered MQA on Feb 26 after 26 days in Engaged. Existing Birdeye Search customer — ORM is the next buy. Qualtrics, Braze, Zendesk intent visible. Carrie Yutzy is the working contact. Jennifer Villani owns the account — Search relationship is the bridge to ORM.",
-    people:[{i:"CY",n:"Carrie Yutzy",t:"Working Contact (Search)"}],
-    actions:["Leverage Search relationship to introduce ORM team","Jennifer Villani to map ORM stakeholders internally","AI Visibility Report to show Search → ORM expansion value"]
-  },
-  { id:"pds", name:"Pacific Dental Services", ae:"Brian Jeffery", status:"WATCH", industry:"Dental", stage:"Engaged", clicks:7, campClicks:8, impr:2888, ctr:"0.277%", pv:30, lastVisit:"May 19", known:2, uvs:26, pvChange:"1400% up", engPts:30,
-    intent:[{kw:"brand reputation",v:0.5},{kw:"social media engagement",v:0.4},{kw:"reputation management",v:0.35}],
-    highlight:"Rebrand = platform eval trigger",
-    context:"On Yext. Evaluating Birdeye 2H 2026. PDS Health rebrand active — page views up 1,400% with 26 unique visitors. Brand consistency narrative is the strongest outreach angle. Courtney Taylor (Director, Brand) is the working contact.",
-    people:[{i:"CT",n:"Courtney Taylor",t:"Director, Brand"}],
-    actions:["Lead with brand consistency narrative tied to rebrand","Brian Jeffery to prep rebrand-specific outreach","Monitor intent for Yext displacement signal escalation"]
-  },
-  { id:"tjx", name:"TJX Companies", ae:"Michael Tarter", status:"WARM", industry:"Retail", stage:"Opportunity", clicks:3, campClicks:6, impr:5405, ctr:"0.111%", pv:38, lastVisit:"May 19", known:1, uvs:23, pvChange:"90% up", engPts:164,
-    intent:[{kw:"Competitors",v:0.82},{kw:"Social KW",v:0.73},{kw:"SEO KWs",v:0.64},{kw:"Non-Brand Intent",v:0.47}],
-    highlight:"Strongest combined intent in program",
-    context:"Strongest combined intent score in the program. Qualtrics, Sprout Social, Hootsuite, Yext intent all visible. Lost survey RFP previously — now connected to CMO + Head of Consumer Insights via founder. Insights AI + Surveys AI displacement territory.",
-    people:[{i:"CM",n:"CMO Contact",t:"via founder connection"},{i:"CI",n:"Head of Consumer Insights",t:"via founder connection"}],
-    actions:["Use founder connection to re-enter at CMO level","Frame Insights AI + Surveys AI as Qualtrics/Hootsuite replacement","AI Visibility Report in progress — strong opener"]
-  },
-  { id:"advocate", name:"Advocate Health Care", ae:"Jennifer Villani", status:"ACT NOW", industry:"Healthcare", stage:"Opportunity", clicks:1, campClicks:7, impr:5278, ctr:"0.133%", pv:3, lastVisit:"Feb 18", known:2,
-    intent:[{kw:"reputation management",v:1.26},{kw:"qualtrics",v:0.5},{kw:"media advertising",v:0.4}],
-    highlight:"Active RFP — Rep.com CSM gone",
-    context:"Active RFP. Rep.com CSM accepted internal role mid-evaluation — insider risk is live. Top of intent heatmap at 1.26 Social. Ad clicks recorded but no site visit since Feb 18. Most urgent account in the program.",
-    people:[{i:"JV",n:"Jennifer Villani",t:"Account Executive"}],
-    actions:["Jennifer Villani to send counter-narrative THIS WEEK — urgent","Address Rep.com insider risk directly in outreach","AI Visibility Report ready — use as conversation starter immediately"]
-  },
-  { id:"multicare", name:"Multicare Health System", ae:"Brian Jeffery", status:"ACT NOW", industry:"Healthcare", stage:"Engaged", clicks:10, campClicks:null, impr:null, ctr:null, pv:21, lastVisit:"May 13", known:2,
-    intent:[{kw:"reputation management",v:0.71},{kw:"media advertising",v:0.55},{kw:"social media advertising",v:0.45}],
-    highlight:"Samaritan acquisition mid-2026",
-    context:"Currently on Press Ganey. Acquiring Samaritan mid-2026 — M&A creates platform consolidation pressure exactly when Birdeye can win the displacement. Karla Sclater is the working contact.",
-    people:[{i:"KS",n:"Karla Sclater",t:"Working Contact"}],
-    actions:["Frame pitch around Samaritan platform consolidation timing","Brian Jeffery to connect with Karla Sclater this week","AI Visibility Report in progress"]
-  },
-  { id:"fiveguys", name:"Five Guys", ae:"Drew Darman", status:"WATCH", industry:"Restaurants", stage:"Engaged", clicks:0, campClicks:5, impr:2303, ctr:"0.217%", pv:66, lastVisit:"May 6", known:0, uvs:7, pvChange:"10% up", engPts:25,
-    intent:[{kw:"media advertising",v:0.22},{kw:"social media advertising",v:0.2}],
-    highlight:"Signaled 'will be back'",
-    context:"Currently on Yext. AE intel: signaled 'will be back.' Jack Goodson is the working contact. QSR is the highest-frequency local search category — AI visibility gaps directly impact foot traffic.",
-    people:[{i:"JG",n:"Jack Goodson",t:"Working Contact"}],
-    actions:["Drew Darman to reach Jack Goodson with AI visibility angle","Show QSR foot-traffic impact of AI search gaps","Monitor for Yext contract renewal window"]
-  },
-  { id:"moneygram", name:"MoneyGram", ae:"Drew Darman", status:"WATCH", industry:"Finance", stage:"Aware", clicks:9, campClicks:3, impr:4751, ctr:"0.063%", pv:12, lastVisit:"May 7", known:1,
-    intent:[{kw:"yext",v:0.8},{kw:"media advertising",v:0.55},{kw:"social media marketing",v:0.4}],
-    highlight:"Full C-suite refresh — no incumbent loyalty",
-    context:"Full C-suite refresh — cold restart with new leadership. Yext intent is the cleanest displacement signal. Doug Klees, Jeffrey Gorsuch, Juan Agualimpia are LI-validated. No incumbent loyalty risk.",
-    people:[{i:"DK",n:"Doug Klees",t:"C-suite (LI-validated)"},{i:"JG",n:"Jeffrey Gorsuch",t:"C-suite (LI-validated)"},{i:"JA",n:"Juan Agualimpia",t:"C-suite (LI-validated)"}],
-    actions:["Drew Darman to connect with new C-suite — no incumbent loyalty","Lead with Yext displacement narrative","Cold outreach via LinkedIn message ad"]
-  },
-  { id:"adventist", name:"Adventist Health Corp", ae:"Jordan Pinzolo", status:"WARM", industry:"Healthcare", stage:"MQA", clicks:3, campClicks:3, impr:441, ctr:"0.68%", pv:16, lastVisit:"May 19", known:3, uvs:13, pvChange:"433% up", engPts:63,
-    intent:[{kw:"qualtrics",v:0.8},{kw:"klaviyo",v:0.7},{kw:"hootsuite",v:0.65}],
-    highlight:"Highest competitor intent — 0.90",
-    context:"Entered MQA on Apr 22 after 46 days in Engaged. Page views up 433% to 16 with 13 unique visitors. Qualtrics, Klaviyo, Hootsuite intent — Social AI + Surveys AI displacement angle. 3 known people: Mara Bryant, Patricia Stone, Karen Hansberger.",
-    people:[{i:"MB",n:"Mara Bryant",t:"Known contact"},{i:"PS",n:"Patricia Stone",t:"Known contact"},{i:"KH",n:"Karen Hansberger",t:"Known contact"}],
-    actions:["Frame Social AI + Surveys AI as Hootsuite/Qualtrics replacement","Jordan Pinzolo to activate all 3 known contacts","AI Visibility Report in progress"]
-  },
-  { id:"fullspeed", name:"FullSpeed Automotive", ae:"Brian Bulkley", status:"ACT NOW", industry:"Automotive", stage:"Opportunity", clicks:1, campClicks:null, impr:null, ctr:null, pv:4, lastVisit:"May 11", known:2,
-    intent:[{kw:"brand reputation",v:0.2}],
-    highlight:"Sun Auto Tire reference available",
-    context:"Moved into Opportunity on Apr 11, 2026 after 61 days in MQA. Multiple automotive brands. Stacey Pool (CMO), Vanessa Allen, Bethany Kaufman are working contacts — 9 LI-validated. Sun Auto Tire (Birdeye customer) is the credibility reference.",
-    people:[{i:"SP",n:"Stacey Pool",t:"CMO"},{i:"VA",n:"Vanessa Allen",t:"Working Contact"},{i:"BK",n:"Bethany Kaufman",t:"Working Contact"}],
-    actions:["Brian Bulkley to activate immediately — now in Opportunity since Apr 11","Lead with Sun Auto Tire as automotive reference case","Stacey Pool (CMO) is the primary contact — CMO-level outreach"]
-  },
-  { id:"crosscountry", name:"CrossCountry Mortgage", ae:"Brian Bulkley", status:"WATCH", industry:"Mortgage", stage:"Aware", clicks:0, campClicks:null, impr:null, ctr:null, pv:0, lastVisit:"—", known:0,
-    intent:[{kw:"Compliance",v:0.45},{kw:"LO-level reputation",v:0.30},{kw:"RESPA/regulatory",v:0.25},{kw:"Local visibility",v:0.20}],
-    highlight:"June 2026 close target",
-    context:"Active evaluation. June 2026 close target — needs acceleration now. Beth Keckley + Ryan Brown are active contacts. 73 total contacts, 15 LI-validated, 2 converted. Compliance vs local visibility tension is the key objection.",
-    people:[{i:"BK",n:"Beth Keckley",t:"Active contact"},{i:"RB",n:"Ryan Brown",t:"Active contact"}],
-    actions:["June close target — acceleration needed this week","Address compliance vs local visibility tension directly","Brian Bulkley to push evaluation forward with Beth + Ryan"]
-  },
-  { id:"unitedrentals", name:"United Rentals", ae:"Rich Spaulding", status:"ACT NOW", industry:"Consumer Services", stage:"MQA", clicks:9, campClicks:40, impr:5523, ctr:"0.724%", pv:854, lastVisit:"May 20", known:0, uvs:386, pvChange:"73% up", engPts:3752,
-    intent:[{kw:"Braze",v:0.85},{kw:"Qualtrics",v:0.78},{kw:"Zendesk",v:0.72},{kw:"44 total keywords",v:0.65}],
-    highlight:"854 PVs — highest in entire program",
-    context:"Highest engagement in the program — 854 page views, 386 unique visitors (73% up), engagement score 3,752. Last visit May 20. Active research across Braze, Qualtrics, Zendesk. Top displacement target in the entire program.",
-    people:[],
-    actions:["Rich Spaulding to prioritize outreach — account is hot","Frame Braze/Qualtrics/Zendesk displacement narrative","Personalized outreach to highest-frequency visitors"]
-  },
-  { id:"farmers", name:"Farmers Insurance", ae:"Rich Spaulding", status:"ACT NOW", industry:"Insurance", stage:"MQA", clicks:45, campClicks:25, impr:2475, ctr:"1.01%", pv:66, lastVisit:"May 20", known:2, uvs:42, pvChange:"31% down", engPts:304,
-    intent:[{kw:"Zendesk",v:0.74},{kw:"Qualtrics",v:0.68},{kw:"Braze",v:0.55},{kw:"33 total keywords",v:0.40}],
-    highlight:"45 clicks — highest click volume in program",
-    context:"42 unique visitors, 66 page views, engagement score 304 — 31% down from prior period. 45 ad clicks and 1.01% CTR still among the strongest in the program. Christian DeMink (SEO & AEO lead) researching AI Visibility. Rich Spaulding to follow up now.",
-    people:[{i:"CD",n:"Christian DeMink",t:"SEO & AEO Lead"}],
-    actions:["Rich Spaulding to follow up immediately — 45 clicks is top of program","Lead with AI Visibility angle — Christian DeMink is the hook","Qualify with field marketing follow-up"]
-  },
-  { id:"pennstate", name:"Penn State Health", ae:"Dan Dougherty", status:"ACT NOW", industry:"Healthcare", stage:"Opportunity", clicks:3, campClicks:16, impr:2941, ctr:"0.544%", pv:32, lastVisit:"May 20", known:0,
-    intent:[{kw:"review management",v:0.65},{kw:"reputation management",v:0.55},{kw:"qualtrics",v:0.5}],
-    highlight:"In Opportunity — direct AE engagement ready",
-    context:"13 unique visitors and 19 page views (36% up). Back-and-forth funnel motion suggests committee evaluation in progress. Currently in Opportunity stage — direct AE engagement ready.",
-    people:[],
-    actions:["Dan Dougherty to activate now — Opportunity stage","Multi-threaded outreach for committee evaluation","Healthcare ORM + reputation management angle"]
-  },
-  { id:"ross", name:"Ross Stores", ae:"Rich Spaulding", status:"ACT NOW", industry:"Retail", stage:"Opportunity", clicks:1, campClicks:13, impr:1411, ctr:"0.921%", pv:20, lastVisit:"May 19", known:0, uvs:16, pvChange:"300% up", engPts:38,
-    intent:[{kw:"hootsuite",v:0.6},{kw:"brand reputation",v:0.55},{kw:"social media marketing",v:0.45}],
-    highlight:"Engaged → Opportunity in 70 days",
-    context:"Fast funnel motion: Engaged → MQA (68 days, Apr 22) → Opportunity in 2 days (Apr 24), then re-entered MQA on May 14 — committee evaluation likely. Hootsuite displacement and brand reputation intent align with TJX retail playbook.",
-    people:[],
-    actions:["Rich Spaulding to act on Opportunity stage urgently","Use TJX as retail comparable in outreach","Brand reputation narrative aligned to retail positioning"]
-  },
-  { id:"lehigh", name:"Lehigh Valley Health Network", ae:"Dan Dougherty", status:"WATCH", industry:"Healthcare", stage:"Aware", clicks:2, campClicks:25, impr:2297, ctr:"1.088%", pv:23, lastVisit:"May 18", known:0, uvs:17, pvChange:"360% up", engPts:34,
-    intent:[{kw:"reputation management",v:0.55},{kw:"media advertising",v:0.45},{kw:"social media advertising",v:0.4}],
-    highlight:"60% engagement growth — qualify now",
-    context:"6 unique visitors and 8 page views (60% up), last visit May 18. Fresh and growing engagement. Healthcare ORM angle aligns with Multicare and Cedars-Sinai playbook. Worth qualifying for STR program inclusion.",
-    people:[],
-    actions:["Dan Dougherty to evaluate for STR program inclusion","Healthcare ORM playbook applies — align with Multicare/Cedars strategy","Monitor for intent acceleration before budget commitment"]
-  },
-  { id:"umass", name:"UMass Memorial Medical Center", ae:"Dan Dougherty", status:"WATCH", industry:"Healthcare", stage:"Aware", clicks:2, campClicks:40, impr:5522, ctr:"0.724%", pv:10, lastVisit:"Mar 12", known:2,
-    intent:[{kw:"Healthcare ORM",v:0.55},{kw:"Reputation management",v:0.45},{kw:"Social media",v:0.30},{kw:"AI search visibility",v:0.20}],
-    highlight:"Healthcare ORM — Multicare playbook applies",
-    context:"2 known people engaged, 2 clicks. Last visit Mar 12 — engagement has cooled. Healthcare system in Massachusetts. ORM and reputation management intent aligns with the Multicare and Cedars-Sinai playbook. Re-engagement needed.",
-    people:[],
-    actions:["Dan Dougherty to re-engage with healthcare ORM narrative","Use Multicare and Cedars-Sinai as comparable references","Monitor intent for acceleration before increasing spend"]
-  }
+  {id:"willow",name:"Willow Bridge Property",ae:"Michael Tarter",status:"WARM",industry:"Real Estate",stage:"MQA",clicks:21,campClicks:10,impr:1555,ctr:"0.643%",pv:61,lastVisit:"May 17",known:7,uvs:36,pvChange:"69% up",engPts:184,
+   intent:[{kw:"Social media advertising",v:0.89},{kw:"Media advertising",v:0.70},{kw:"Reputation management",v:0.55},{kw:"Channel KW",v:0.10}],
+   highlight:"Meeting confirmed May 26",
+   context:"Meeting confirmed May 26, 12–1pm ET. Contact replied to Michael Tarter — excited to learn about AI Visibility. Invite to go to both the contact and Clara Cho (Director, Digital Strategy). 61 page views, 36 unique visitors (69% up).",
+   people:[{i:"CC",n:"Clara Cho",t:"Director, Digital Strategy"}],
+   actions:["Send meeting invite for May 26 12–1pm ET to both contacts including Clara Cho","Lead with AI Visibility tool as the demo anchor","Personalized LP live — AE image mapped to account"]},
+
+  {id:"drhorton",name:"DR Horton",ae:"Drew Darman",status:"ACT NOW",industry:"Real Estate",stage:"MQA",clicks:16,campClicks:5,impr:10375,ctr:"0.048%",pv:50,lastVisit:"May 17",known:4,uvs:25,pvChange:"178% up",engPts:140,
+   intent:[{kw:"Qualtrics",v:0.85},{kw:"Social media mgmt tools",v:0.75},{kw:"Zendesk",v:0.65}],
+   highlight:"243% engagement surge — ChatMeter displacement",
+   context:"25 visitors and 50 page views (178% up), engagement 140. Local division engaged — corporate uses ChatMeter. Strong Social and Competitors intent. Displacement angle is active. CTR low at 0.048% on 10K impressions — creative refresh needed.",
+   people:[],
+   actions:["Send counter-narrative vs ChatMeter this week","Tailor outreach to local division contacts","AI Visibility Report in progress — use as conversation opener","Review display creative — 10K impressions, only 5 clicks"]},
+
+  {id:"cedars",name:"Cedars-Sinai",ae:"Jennifer Villani",status:"WARM",industry:"Healthcare",stage:"MQA",clicks:2,campClicks:6,impr:4211,ctr:"0.143%",pv:22,lastVisit:"May 19",known:1,uvs:20,pvChange:"15% down",engPts:87,
+   intent:[{kw:"Qualtrics",v:0.82},{kw:"Braze",v:0.70},{kw:"Zendesk",v:0.60},{kw:"ISV Partners",v:0.15}],
+   highlight:"Upsell — ORM expansion",
+   context:"Entered MQA on Feb 26 after 26 days in Engaged. Existing Birdeye Search customer — ORM is the next buy. Qualtrics, Braze, Zendesk intent visible. Carrie Yutzy is the working contact. Jennifer Villani owns the account — Search relationship is the bridge to ORM.",
+   people:[{i:"CY",n:"Carrie Yutzy",t:"Working Contact (Search)"}],
+   actions:["Leverage Search relationship to introduce ORM team","Jennifer Villani to map ORM stakeholders internally","AI Visibility Report to show Search → ORM expansion value"]},
+
+  {id:"pds",name:"Pacific Dental Services",ae:"Brian Jeffery",status:"ACT NOW",industry:"Dental",stage:"Engaged",clicks:7,campClicks:8,impr:2888,ctr:"0.277%",pv:30,lastVisit:"May 19",known:2,uvs:26,pvChange:"1400% up",engPts:30,
+   intent:[{kw:"Brand reputation",v:0.50},{kw:"Social media engagement",v:0.40},{kw:"Reputation management",v:0.35}],
+   highlight:"RFP confirmed — meeting invite pending",
+   context:"RFP kicking off — Brian Jeffery received confirmation on May 15. Solutions partner engaged. Meeting invite incoming. Page views up 1,400% with 26 unique visitors. Courtney Taylor (Director, Brand) is the working contact.",
+   people:[{i:"CT",n:"Courtney Taylor",t:"Director, Brand"}],
+   actions:["RFP confirmed — Brian Jeffery to prepare RFP response immediately","Meeting invite to be sent — solutions partner engaged","Brand consistency + AI Visibility narrative for RFP positioning"]},
+
+  {id:"tjx",name:"TJX Companies",ae:"Michael Tarter",status:"WARM",industry:"Retail",stage:"Opportunity",clicks:3,campClicks:6,impr:5405,ctr:"0.111%",pv:38,lastVisit:"May 19",known:1,uvs:23,pvChange:"90% up",engPts:164,
+   intent:[{kw:"Competitors",v:0.82},{kw:"Social KW",v:0.73},{kw:"SEO KWs",v:0.64},{kw:"Non-Brand Intent",v:0.47}],
+   highlight:"Strongest combined intent in program",
+   context:"Strongest combined intent score in the program. Qualtrics, Sprout Social, Hootsuite, Yext intent all visible. Lost survey RFP previously — now connected to CMO + Head of Consumer Insights via founder. Insights AI + Surveys AI displacement territory.",
+   people:[{i:"CM",n:"CMO Contact",t:"via founder connection"},{i:"CI",n:"Head of Consumer Insights",t:"via founder connection"}],
+   actions:["Use founder connection to re-enter at CMO level","Frame Insights AI + Surveys AI as Qualtrics/Hootsuite replacement","AI Visibility Report in progress — strong opener"]},
+
+  {id:"advocate",name:"Advocate Health Care",ae:"Jennifer Villani",status:"ACT NOW",industry:"Healthcare",stage:"Align (SQL)",clicks:1,campClicks:7,impr:5278,ctr:"0.133%",pv:3,lastVisit:"Feb 18",known:2,uvs:1,pvChange:"",engPts:0,
+   intent:[{kw:"Reputation management",v:1.26},{kw:"Qualtrics",v:0.50},{kw:"Media advertising",v:0.40}],
+   highlight:"$200K ACV · Align SQL · ABX-influenced",
+   context:"Align (SQL) — $200K ACV opportunity, ABX-influenced stage transition. Active RFP with Rep.com CSM gone mid-evaluation. Top intent heatmap at 1.26. Jennifer Villani to close counter-narrative loop this week.",
+   people:[{i:"JV",n:"Jennifer Villani",t:"Account Executive"}],
+   actions:["Jennifer Villani to send counter-narrative THIS WEEK — urgent","Address Rep.com insider risk directly in outreach","AI Visibility Report ready — use as conversation starter immediately"]},
+
+  {id:"multicare",name:"Multicare Health System",ae:"Brian Jeffery",status:"ACT NOW",industry:"Healthcare",stage:"Align (SQL)",clicks:10,campClicks:null,impr:null,ctr:null,pv:21,lastVisit:"May 13",known:2,uvs:13,pvChange:"51% down",engPts:85,
+   intent:[{kw:"Reputation management",v:0.71},{kw:"Media advertising",v:0.55},{kw:"Social media advertising",v:0.45}],
+   highlight:"$200K ACV · Moved SAL → SQL · ABX-influenced",
+   context:"Moved to Align (SQL) — $200K ACV opportunity, ABX-influenced stage transition. Acquiring Samaritan mid-2026 creates platform consolidation pressure. Karla Sclater is the working contact. Press Ganey displacement is the primary narrative.",
+   people:[{i:"KS",n:"Karla Sclater",t:"Working Contact"}],
+   actions:["Frame pitch around Samaritan platform consolidation timing","Brian Jeffery to connect with Karla Sclater this week","AI Visibility Report in progress"]},
+
+  {id:"fiveguys",name:"Five Guys",ae:"Drew Darman",status:"WATCH",industry:"Restaurants",stage:"Engaged",clicks:0,campClicks:5,impr:2303,ctr:"0.217%",pv:66,lastVisit:"May 6",known:0,uvs:7,pvChange:"10% up",engPts:25,
+   intent:[{kw:"Media advertising",v:0.22},{kw:"Social media advertising",v:0.20}],
+   highlight:"Signaled 'will be back'",
+   context:"Currently on Yext. AE intel: signaled 'will be back.' Jack Goodson is the working contact. QSR is the highest-frequency local search category — AI visibility gaps directly impact foot traffic.",
+   people:[{i:"JG",n:"Jack Goodson",t:"Working Contact"}],
+   actions:["Drew Darman to reach Jack Goodson with AI visibility angle","Show QSR foot-traffic impact of AI search gaps","Monitor for Yext contract renewal window"]},
+
+  {id:"moneygram",name:"MoneyGram",ae:"Derek Talaga",status:"WATCH",industry:"Finance",stage:"Discovery (SAL)",clicks:9,campClicks:3,impr:4751,ctr:"0.063%",pv:12,lastVisit:"May 7",known:1,uvs:7,pvChange:"300% up",engPts:13,
+   intent:[{kw:"Yext",v:0.80},{kw:"Media advertising",v:0.55},{kw:"Social media marketing",v:0.40}],
+   highlight:"Moved into Discovery after program — C-suite refreshed",
+   context:"Moved into Discovery (SAL) after ABM program engagement. Full C-suite refresh — no incumbent loyalty. Yext intent is the cleanest displacement signal. Doug Klees, Jeffrey Gorsuch, Juan Agualimpia are LI-validated.",
+   people:[{i:"DK",n:"Doug Klees",t:"C-suite (LI-validated)"},{i:"JG",n:"Jeffrey Gorsuch",t:"C-suite (LI-validated)"},{i:"JA",n:"Juan Agualimpia",t:"C-suite (LI-validated)"}],
+   actions:["Derek Talaga to connect with new C-suite — no incumbent loyalty","Lead with Yext displacement narrative","Cold outreach via LinkedIn message ad"]},
+
+  {id:"adventist",name:"Adventist Health Corp",ae:"Jordan Pinzolo",status:"WARM",industry:"Healthcare",stage:"MQA",clicks:3,campClicks:3,impr:441,ctr:"0.68%",pv:16,lastVisit:"May 19",known:3,uvs:13,pvChange:"433% up",engPts:63,
+   intent:[{kw:"Qualtrics",v:0.80},{kw:"Klaviyo",v:0.70},{kw:"Hootsuite",v:0.65}],
+   highlight:"433% page view surge — 3 known contacts",
+   context:"Entered MQA on Apr 22 after 46 days in Engaged. Page views up 433% to 16 with 13 unique visitors. Qualtrics, Klaviyo, Hootsuite intent — Social AI + Surveys AI displacement angle. 3 known people: Mara Bryant, Patricia Stone, Karen Hansberger.",
+   people:[{i:"MB",n:"Mara Bryant",t:"Known contact"},{i:"PS",n:"Patricia Stone",t:"Known contact"},{i:"KH",n:"Karen Hansberger",t:"Known contact"}],
+   actions:["Frame Social AI + Surveys AI as Hootsuite/Qualtrics replacement","Jordan Pinzolo to activate all 3 known contacts","AI Visibility Report in progress"]},
+
+  {id:"fullspeed",name:"FullSpeed Automotive",ae:"Brian Bulkley",status:"ACT NOW",industry:"Automotive",stage:"Discovery (SAL)",clicks:1,campClicks:null,impr:null,ctr:null,pv:4,lastVisit:"May 11",known:2,uvs:2,pvChange:"33% down",engPts:24,
+   intent:[{kw:"Brand reputation",v:0.20}],
+   highlight:"Moved to Opportunity Apr 11 — 61 days in MQA",
+   context:"Moved into Discovery (SAL) — entered Opportunity on Apr 11 after 61 days in MQA. Multiple automotive brands. Stacey Pool (CMO), Vanessa Allen, Bethany Kaufman are working contacts. Sun Auto Tire (Birdeye customer) is the credibility reference.",
+   people:[{i:"SP",n:"Stacey Pool",t:"CMO"},{i:"VA",n:"Vanessa Allen",t:"Working Contact"},{i:"BK",n:"Bethany Kaufman",t:"Working Contact"}],
+   actions:["Brian Bulkley to activate immediately — Discovery stage","Lead with Sun Auto Tire as automotive reference case","Stacey Pool (CMO) is the primary contact — CMO-level outreach"]},
+
+  {id:"crosscountry",name:"CrossCountry Mortgage",ae:"Brian Bulkley",status:"WATCH",industry:"Mortgage",stage:"Aware",clicks:0,campClicks:null,impr:null,ctr:null,pv:0,lastVisit:"—",known:0,uvs:0,pvChange:"",engPts:0,
+   intent:[{kw:"Compliance",v:0.45},{kw:"LO-level reputation",v:0.30},{kw:"RESPA/regulatory",v:0.25},{kw:"Local visibility",v:0.20}],
+   highlight:"June 2026 close target",
+   context:"Active evaluation. June 2026 close target — needs acceleration now. Beth Keckley + Ryan Brown are active contacts. 73 total contacts, 15 LI-validated, 2 converted. Compliance vs local visibility tension is the key objection.",
+   people:[{i:"BK",n:"Beth Keckley",t:"Active contact"},{i:"RB",n:"Ryan Brown",t:"Active contact"}],
+   actions:["June close target — acceleration needed this week","Address compliance vs local visibility tension directly","Brian Bulkley to push evaluation forward with Beth + Ryan"]},
+
+  {id:"unitedrentals",name:"United Rentals",ae:"Rich Spaulding",status:"ACT NOW",industry:"Consumer Services",stage:"MQA",clicks:9,campClicks:40,impr:5523,ctr:"0.724%",pv:854,lastVisit:"May 20",known:0,uvs:386,pvChange:"73% up",engPts:3752,
+   intent:[{kw:"Braze",v:0.85},{kw:"Qualtrics",v:0.78},{kw:"Zendesk",v:0.72},{kw:"44 total keywords",v:0.65}],
+   highlight:"854 PVs · 3,752 engagement pts — highest in program",
+   context:"Highest engagement in the program — 854 page views, 386 unique visitors (73% up), engagement score 3,752. Last visit May 20. Active research across Braze, Qualtrics, Zendesk. Top displacement target in the entire program.",
+   people:[],
+   actions:["Rich Spaulding to prioritize outreach — account is hot","Frame Braze/Qualtrics/Zendesk displacement narrative","Personalized outreach to highest-frequency visitors"]},
+
+  {id:"farmers",name:"Farmers Insurance",ae:"Rich Spaulding",status:"ACT NOW",industry:"Insurance",stage:"MQA",clicks:45,campClicks:25,impr:2475,ctr:"1.01%",pv:66,lastVisit:"May 20",known:2,uvs:42,pvChange:"31% down",engPts:304,
+   intent:[{kw:"Zendesk",v:0.74},{kw:"Qualtrics",v:0.68},{kw:"Braze",v:0.55},{kw:"33 total keywords",v:0.40}],
+   highlight:"45 clicks · 1.01% CTR — highest click volume in program",
+   context:"42 unique visitors, 66 page views, engagement score 304. 45 ad clicks and 1.01% CTR among the strongest in the program. Christian DeMink (SEO & AEO lead) researching AI Visibility. Rich Spaulding to follow up now.",
+   people:[{i:"CD",n:"Christian DeMink",t:"SEO & AEO Lead"}],
+   actions:["Rich Spaulding to follow up immediately — 45 clicks is top of program","Lead with AI Visibility angle — Christian DeMink is the hook","Qualify with field marketing follow-up"]},
+
+  {id:"pennstate",name:"Penn State Health",ae:"Dan Dougherty",status:"ACT NOW",industry:"Healthcare",stage:"Discovery (SAL)",clicks:3,campClicks:16,impr:2941,ctr:"0.544%",pv:32,lastVisit:"May 20",known:0,uvs:25,pvChange:"167% up",engPts:69,
+   intent:[{kw:"Review management",v:0.65},{kw:"Reputation management",v:0.55},{kw:"Qualtrics",v:0.50}],
+   highlight:"In Discovery — committee evaluation active",
+   context:"13 unique visitors and 32 page views (167% up). Back-and-forth funnel motion (Engaged → MQA → Opportunity → MQA → Opportunity) suggests committee evaluation in progress. Now in Discovery (SAL) — direct AE engagement ready.",
+   people:[],
+   actions:["Dan Dougherty to activate now — Discovery stage","Multi-threaded outreach for committee evaluation","Healthcare ORM + reputation management angle"]},
+
+  {id:"ross",name:"Ross Stores",ae:"Rich Spaulding",status:"ACT NOW",industry:"Retail",stage:"Opportunity",clicks:1,campClicks:13,impr:1411,ctr:"0.921%",pv:20,lastVisit:"May 19",known:0,uvs:16,pvChange:"300% up",engPts:38,
+   intent:[{kw:"Hootsuite",v:0.60},{kw:"Brand reputation",v:0.55},{kw:"Social media marketing",v:0.45},{kw:"AI search",v:0.25}],
+   highlight:"Engaged → Opportunity in 70 days",
+   context:"Fast funnel motion: Engaged → MQA (68 days, Apr 22) → Opportunity in 2 days (Apr 24), then re-entered MQA on May 14 — committee evaluation likely. Hootsuite displacement and brand reputation intent align with TJX retail playbook.",
+   people:[],
+   actions:["Rich Spaulding to act on Opportunity stage urgently","Use TJX as retail comparable in outreach","Brand reputation narrative aligned to retail positioning"]},
+
+  {id:"lehigh",name:"Lehigh Valley Health Network",ae:"Dan Dougherty",status:"WATCH",industry:"Healthcare",stage:"Aware",clicks:2,campClicks:25,impr:2297,ctr:"1.088%",pv:23,lastVisit:"May 18",known:0,uvs:17,pvChange:"360% up",engPts:34,
+   intent:[{kw:"Reputation management",v:0.55},{kw:"Media advertising",v:0.45},{kw:"Social media advertising",v:0.40}],
+   highlight:"360% engagement growth · 1.088% CTR — best CTR in program",
+   context:"17 unique visitors and 23 page views (360% up), last visit May 18. Best CTR in the program at 1.088%. Healthcare ORM angle aligns with Multicare and Cedars-Sinai playbook. Worth qualifying for deeper STR engagement.",
+   people:[],
+   actions:["Dan Dougherty to qualify immediately — 360% growth + best CTR","Healthcare ORM playbook applies — align with Multicare/Cedars strategy","Monitor for intent acceleration and increase budget if signal holds"]},
+
+  {id:"umass",name:"UMass Memorial Medical Center",ae:"Dan Dougherty",status:"WATCH",industry:"Healthcare",stage:"Aware",clicks:2,campClicks:40,impr:5522,ctr:"0.724%",pv:10,lastVisit:"Mar 12",known:2,uvs:2,pvChange:"",engPts:0,
+   intent:[{kw:"Healthcare ORM",v:0.55},{kw:"Reputation management",v:0.45},{kw:"Social media",v:0.30},{kw:"AI search visibility",v:0.20}],
+   highlight:"Healthcare ORM — Multicare playbook applies",
+   context:"2 known people engaged, 40 campaign clicks at 0.724% CTR despite low site engagement. Last visit Mar 12 — engagement has cooled. ORM and reputation management intent aligns with Multicare and Cedars-Sinai playbook. Re-engagement needed.",
+   people:[],
+   actions:["Dan Dougherty to re-engage with healthcare ORM narrative","Use Multicare and Cedars-Sinai as comparable references","Monitor intent for acceleration before increasing spend"]}
 ];
 
-// Build AE filter pills
-const AES = ["All AEs", ...new Set(ACCTS.map(a=>a.ae)).values()].sort((a,b)=> a==="All AEs"?-1:b==="All AEs"?1:a.localeCompare(b));
+const AES = ["All AEs",...new Set(ACCTS.map(a=>a.ae))].sort((a,b)=>a==="All AEs"?-1:b==="All AEs"?1:a.localeCompare(b));
 const aePillsEl = document.getElementById('ae-pills');
-AES.forEach(ae => {
-  const btn = document.createElement('button');
-  btn.className = 'pill p-ae' + (ae==="All AEs"?" on":"");
-  btn.dataset.ae = ae==="All AEs"?"all":ae;
-  btn.textContent = ae;
-  btn.onclick = () => setAE(btn.dataset.ae, btn);
+AES.forEach(ae=>{
+  const btn=document.createElement('button');
+  btn.className='pill p-ae'+(ae==="All AEs"?" on":"");
+  btn.dataset.ae=ae==="All AEs"?"all":ae;
+  btn.textContent=ae;
+  btn.onclick=()=>setAE(btn.dataset.ae,btn);
   aePillsEl.appendChild(btn);
 });
 
-// Build account list
-const listEl = document.getElementById('acct-list');
-ACCTS.forEach(a => {
-  const el = document.createElement('div');
-  el.className = 'acct-item';
-  el.id = 'li-'+a.id;
-  el.dataset.signal = a.status;
-  el.dataset.ae = a.ae;
-  const dc = a.status==='ACT NOW'?'dot-actnow':a.status==='WARM'?'dot-warm':'dot-watch';
-  el.innerHTML = `<div class="acct-dot ${dc}"></div><span class="acct-name">${a.name}</span><span class="acct-ae-tag">${a.ae}</span>`;
-  el.onclick = () => selectAcct(a.id);
+const listEl=document.getElementById('acct-list');
+ACCTS.forEach(a=>{
+  const el=document.createElement('div');
+  el.className='acct-item';
+  el.id='li-'+a.id;
+  el.dataset.signal=a.status;
+  el.dataset.ae=a.ae;
+  const dc=a.status==='ACT NOW'?'dot-actnow':a.status==='WARM'?'dot-warm':'dot-watch';
+  el.innerHTML=`<div class="acct-dot ${dc}"></div><span class="acct-name">${a.name}</span><span class="acct-ae-tag">${a.ae}</span>`;
+  el.onclick=()=>selectAcct(a.id);
   listEl.appendChild(el);
 });
 
-// Build account views
-const viewsEl = document.getElementById('views');
-ACCTS.forEach(a => {
-  const bc = a.status==='ACT NOW'?'badge-actnow':a.status==='WARM'?'badge-warm':'badge-watch';
-  const intentHTML = a.intent.map(i => {
-    const c = i.v>0.8?'#E24B4A':i.v>0.5?'#EF9F27':'#378ADD';
-    const w = Math.min(100, Math.round(i.v*100));
+const viewsEl=document.getElementById('views');
+ACCTS.forEach(a=>{
+  const bc=a.status==='ACT NOW'?'badge-actnow':a.status==='WARM'?'badge-warm':'badge-watch';
+  const intentHTML=a.intent.map(i=>{
+    const c=i.v>0.8?'#E24B4A':i.v>0.5?'#EF9F27':'#378ADD';
+    const w=Math.min(100,Math.round(i.v*100));
     return `<div class="intent-row"><span class="intent-kw">${i.kw}</span><div class="intent-right"><div class="intent-bar-bg"><div class="intent-bar-fill" style="width:${w}%;background:${c}"></div></div><span class="intent-score">${i.v.toFixed(2)}</span></div></div>`;
   }).join('');
+  const peopleHTML=a.people.length?a.people.map(p=>`<div class="person-row"><div class="avatar">${p.i}</div><div><div class="person-name">${p.n}</div><div class="person-title">${p.t}</div></div></div>`).join(''):'<p class="no-contacts">No known contacts surfaced yet</p>';
+  const actionsHTML=a.actions.map(x=>`<div class="action-item"><div class="action-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div class="action-text">${x}</div></div>`).join('');
+  const pvDeltaClass=a.pvChange&&a.pvChange.includes('up')?'delta-up':'delta-dn';
 
-  const peopleHTML = a.people.length
-    ? a.people.map(p=>`<div class="person-row"><div class="avatar">${p.i}</div><div><div class="person-name">${p.n}</div><div class="person-title">${p.t}</div></div></div>`).join('')
-    : '<p class="no-contacts">No known contacts surfaced yet</p>';
-
-  const actionsHTML = a.actions.map(x=>`<div class="action-item"><div class="action-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div class="action-text">${x}</div></div>`).join('');
-
-  const div = document.createElement('div');
-  div.className = 'acct-view';
-  div.id = 'v-'+a.id;
-  div.innerHTML = `
+  const div=document.createElement('div');
+  div.className='acct-view';
+  div.id='v-'+a.id;
+  div.innerHTML=`
     <div class="acct-card">
       <div class="acct-card-top">
         <div>
@@ -503,146 +527,80 @@ ACCTS.forEach(a => {
         <span class="badge ${bc}">${a.status}</span>
       </div>
       <div class="stats-grid">
-        <div class="stat"><div class="stat-label">Campaign clicks</div><div class="stat-val">${a.campClicks ?? a.clicks}</div></div>
-        <div class="stat"><div class="stat-label">Impressions</div><div class="stat-val">${a.impr ? a.impr.toLocaleString() : "—"}</div></div><div class="stat"><div class="stat-label">Page views</div><div class="stat-val">${a.pv}</div></div>
-        <div class="stat"><div class="stat-label">CTR</div><div class="stat-val small">${a.ctr ?? "—"}</div></div><div class="stat"><div class="stat-label">Known people</div><div class="stat-val">${a.known}</div></div>
+        <div class="stat"><div class="stat-label">Page views</div><div class="stat-val">${a.pv.toLocaleString()}</div><div class="stat-delta ${pvDeltaClass}">${a.pvChange||'—'}</div></div>
+        <div class="stat"><div class="stat-label">Unique visitors</div><div class="stat-val">${a.uvs??'—'}</div></div>
+        <div class="stat"><div class="stat-label">Engagement pts</div><div class="stat-val">${a.engPts?a.engPts.toLocaleString():'—'}</div></div>
+        <div class="stat"><div class="stat-label">Campaign clicks</div><div class="stat-val">${a.campClicks??a.clicks}</div></div>
+        <div class="stat"><div class="stat-label">Impressions</div><div class="stat-val">${a.impr?a.impr.toLocaleString():'—'}</div></div>
         <div class="stat"><div class="stat-label">Last visit</div><div class="stat-val small">${a.lastVisit}</div></div>
       </div>
     </div>
-
     <div class="panel">
-      <div class="panel-title">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v2"/><path d="M4 11h4"/><path d="M4 16h4"/><path d="M4 6h4"/></svg>
-        Live account news
-      </div>
+      <div class="panel-title"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v2"/><path d="M4 11h4"/><path d="M4 16h4"/><path d="M4 6h4"/></svg>Live account news</div>
       <div class="news-loading" id="nl-${a.id}"><div class="spinner"></div>Fetching latest news for ${a.name}...</div>
       <div id="nc-${a.id}" style="display:none"></div>
     </div>
-
-    <div class="two-col" style="margin-bottom:14px">
+    <div class="two-col">
       <div class="panel">
-        <div class="panel-title">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          Intent signals
-        </div>
+        <div class="panel-title"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Intent signals</div>
         ${intentHTML}
       </div>
       <div class="panel">
-        <div class="panel-title">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          Known contacts
-        </div>
+        <div class="panel-title"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Known contacts</div>
         ${peopleHTML}
       </div>
     </div>
-
     <div class="panel" style="margin-bottom:14px">
-      <div class="panel-title">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        AE actions
-      </div>
+      <div class="panel-title"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>AE actions</div>
       ${actionsHTML}
     </div>
-
     <div class="panel" style="margin-bottom:14px">
-      <div class="panel-title">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        Account context
-      </div>
+      <div class="panel-title"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Account context</div>
       <div class="context-tag">${a.highlight}</div>
       <div class="context-body">${a.context}</div>
     </div>
-
-    <div class="last-updated">Data as of ${TODAY} · Birdeye ABM</div>
-  `;
+    <div class="last-updated">Data as of ${TODAY} · Birdeye ABM</div>`;
   viewsEl.appendChild(div);
 });
 
-// Filter state
-let sigFilter = 'all';
-let aeFilter = 'all';
+let sigFilter='all',aeFilter='all';
+function setSig(val,btn){sigFilter=val;document.querySelectorAll('.pill.p-all,.pill.p-actnow,.pill.p-warm,.pill.p-watch').forEach(p=>p.classList.remove('on'));btn.classList.add('on');applyFilters()}
+function setAE(val,btn){aeFilter=val;document.querySelectorAll('.pill.p-ae').forEach(p=>p.classList.remove('on'));btn.classList.add('on');applyFilters()}
+function applyFilters(){document.querySelectorAll('.acct-item').forEach(el=>{const s=sigFilter==='all'||el.dataset.signal===sigFilter;const a=aeFilter==='all'||el.dataset.ae===aeFilter;el.classList.toggle('hidden',!(s&&a))})}
 
-function setSig(val, btn) {
-  sigFilter = val;
-  document.querySelectorAll('.pill.p-all,.pill.p-actnow,.pill.p-warm,.pill.p-watch').forEach(p => p.classList.remove('on'));
-  btn.classList.add('on');
-  applyFilters();
-}
-
-function setAE(val, btn) {
-  aeFilter = val;
-  document.querySelectorAll('.pill.p-ae').forEach(p => p.classList.remove('on'));
-  btn.classList.add('on');
-  applyFilters();
-}
-
-function applyFilters() {
-  document.querySelectorAll('.acct-item').forEach(el => {
-    const sigOk = sigFilter==='all' || el.dataset.signal===sigFilter;
-    const aeOk = aeFilter==='all' || el.dataset.ae===aeFilter;
-    el.classList.toggle('hidden', !(sigOk && aeOk));
-  });
-}
-
-// News cache
-const newsCache = {};
-
-async function fetchNews(acct) {
-  const loadEl = document.getElementById('nl-'+acct.id);
-  const contEl = document.getElementById('nc-'+acct.id);
-  if (newsCache[acct.id]) { renderNews(acct.id, newsCache[acct.id]); return; }
-  try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({
-        model:"claude-sonnet-4-20250514",
-        max_tokens:1000,
-        tools:[{type:"web_search_20250305",name:"web_search"}],
-        system:`You are a B2B ABM analyst at Birdeye. Today is ${TODAY}. Search for the 2-3 most recent and relevant news items about the company provided. For each item return: headline (under 12 words), source, approximate date, and a 1-sentence ABM signal explaining why it matters for Birdeye outreach. Return ONLY a valid JSON array with no markdown, no preamble, no code fences. Schema: [{"headline":"...","source":"...","date":"...","signal":"..."}]`,
-        messages:[{role:"user",content:`Find recent news about ${acct.name} (${acct.industry} industry) relevant to B2B SaaS outreach. JSON only.`}]
-      })
-    });
-    const data = await res.json();
-    const text = data.content.filter(b=>b.type==="text").map(b=>b.text).join("");
-    const clean = text.replace(/```json|```/g,"").trim();
-    const parsed = JSON.parse(clean);
-    newsCache[acct.id] = parsed;
-    renderNews(acct.id, parsed);
-  } catch(e) {
-    loadEl.style.display='none';
-    contEl.style.display='block';
-    contEl.innerHTML=`<p class="news-error">Could not load news for ${acct.name}. Check manually or retry.</p>`;
+const newsCache={};
+async function fetchNews(acct){
+  if(newsCache[acct.id]){renderNews(acct.id,newsCache[acct.id]);return}
+  try{
+    const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,tools:[{type:"web_search_20250305",name:"web_search"}],system:`You are a B2B ABM analyst at Birdeye. Today is ${TODAY}. Search for the 2-3 most recent and relevant news items about the company. For each return: headline (under 12 words), source, approximate date, and a 1-sentence ABM signal explaining why it matters for Birdeye outreach. Return ONLY a valid JSON array, no markdown, no preamble. Schema: [{"headline":"...","source":"...","date":"...","signal":"..."}]`,messages:[{role:"user",content:`Find recent news about ${acct.name} (${acct.industry}) relevant to B2B SaaS outreach. JSON only.`}]})});
+    const data=await res.json();
+    const text=data.content.filter(b=>b.type==="text").map(b=>b.text).join("");
+    const clean=text.replace(/```json|```/g,"").trim();
+    const parsed=JSON.parse(clean);
+    newsCache[acct.id]=parsed;
+    renderNews(acct.id,parsed);
+  }catch(e){
+    document.getElementById('nl-'+acct.id).style.display='none';
+    const el=document.getElementById('nc-'+acct.id);el.style.display='block';
+    el.innerHTML=`<p class="news-error">Could not load news for ${acct.name}. Check manually or retry.</p>`;
   }
 }
-
-function renderNews(id, items) {
+function renderNews(id,items){
   document.getElementById('nl-'+id).style.display='none';
-  const el = document.getElementById('nc-'+id);
-  el.style.display='block';
-  if (!items||!items.length){ el.innerHTML='<p class="news-error">No recent news found.</p>'; return; }
-  el.innerHTML = items.map(n=>`
-    <div class="news-item">
-      <div class="news-headline">${n.headline}</div>
-      <div class="news-meta">${n.source}&nbsp;·&nbsp;${n.date}</div>
-      ${n.signal?`<div class="news-signal">${n.signal}</div>`:''}
-    </div>
-  `).join('');
+  const el=document.getElementById('nc-'+id);el.style.display='block';
+  if(!items||!items.length){el.innerHTML='<p class="news-error">No recent news found.</p>';return}
+  el.innerHTML=items.map(n=>`<div class="news-item"><div class="news-headline">${n.headline}</div><div class="news-meta">${n.source}&nbsp;·&nbsp;${n.date}</div>${n.signal?`<div class="news-signal">${n.signal}</div>`:''}</div>`).join('');
 }
 
-let currentId = null;
-
-function selectAcct(id) {
-  if (currentId) {
-    document.getElementById('v-'+currentId)?.classList.remove('visible');
-    document.getElementById('li-'+currentId)?.classList.remove('selected');
-  }
+let currentId=null;
+function selectAcct(id){
+  if(currentId){document.getElementById('v-'+currentId)?.classList.remove('visible');document.getElementById('li-'+currentId)?.classList.remove('selected')}
   document.getElementById('welcome').style.display='none';
   document.getElementById('v-'+id)?.classList.add('visible');
   document.getElementById('li-'+id)?.classList.add('selected');
-  currentId = id;
-  const acct = ACCTS.find(a=>a.id===id);
-  if (acct) fetchNews(acct);
+  currentId=id;
+  const acct=ACCTS.find(a=>a.id===id);
+  if(acct)fetchNews(acct);
 }
 </script>
 </body>
